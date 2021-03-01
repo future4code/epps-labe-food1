@@ -1,9 +1,10 @@
 import React from 'react'
+import AdressRegForm from './AdressRegForm'
 
 export default function AdressRegister () {
     return(
         <div>
-            <h1>cadastrar endereco</h1>
+            <AdressRegForm />
         </div>
     )
 }

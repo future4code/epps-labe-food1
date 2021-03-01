@@ -1,9 +1,11 @@
 import React from 'react'
+import SignUpForm from "../SignUp/SignUpForm"
+
 
 export default function SignUp () {
     return(
         <div>
-            <h1>SignUp</h1>
+            <SignUpForm />
         </div>
     )
 }

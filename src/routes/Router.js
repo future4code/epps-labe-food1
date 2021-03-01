@@ -15,7 +15,7 @@ import Error from "../pages/Error/Error";
 export default function Router() {
   return (
     <BrowserRouter>
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route exact path="/">
           <FirstScreen />

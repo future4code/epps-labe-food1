@@ -1,9 +1,12 @@
 import React from 'react'
+import {Background, Logo, Title} from './styles'
 
 export default function FirstScreen () {
-    return(
-        <div>
-            <h1>tela inicial</h1>
-        </div>
+    return(    
+        <Background>
+            <Logo>
+                <Title>Future <strong>Eats</strong></Title>
+            </Logo>   
+        </Background>
     )
 }
