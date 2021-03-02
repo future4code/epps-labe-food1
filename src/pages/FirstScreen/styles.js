@@ -1,26 +1,30 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Background = styled.div`
-background-color: black;
-color: white;
-height: 100vh;
-`
+  background-color: black;
+  color: white;
+  height: 100vh;
+`;
 export const Logo = styled.div`
-height: 117px;
-display: flex;
+  height: 117px;
+  display: flex;
   flex-direction: column;
   align-items: center;
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`
-export const Title = styled.p`
-/* border: 1px solid white; */
-margin-top: 50%;
-font-size: 40px;
-width: 120px;
-background: -webkit-linear-gradient(
-    RGB(255,255,255) 50%,
-    RGB(92, 182, 70) 50%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`
+ 
+  
+`;
+export const Title = styled.img`
+  margin-top: 35vh;
+  border: 1px solid white
+
+  @media (min-width: 500px) and (max-width: 800px) {
+    margin: 40vh;
+    heigth: 150px;
+    width: 126px;
+   }
+   @media (max-width: 499px) {
+    margin-top: 288px;
+     heigth: 65px;
+     width: 126px;
+   } ;
+`;
