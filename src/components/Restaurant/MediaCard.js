@@ -50,7 +50,7 @@ export default function MediaCard() {
               50 - 60 minutos <span>Frete: R$ 6,00</span>
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              R. Fradique Coltinho, 1136 - Vila Mariana
+              R. Fradique Coutinho, 1136 - Vila Mariana
             </Typography>
             <p>Principais</p>
             <hr />
