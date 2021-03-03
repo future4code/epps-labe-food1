@@ -7,7 +7,7 @@ import { ProfileContainer } from './styles'
 
 
 export default function ProfilePage() {
-    useProtectedPage();
+    // useProtectedPage();
     useEffect(() => {
         // localStorage.setItem("token", "token") // apenas para teste
     }, [])
