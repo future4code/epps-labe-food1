@@ -1,17 +1,21 @@
 import {  Typography} from '@material-ui/core'
-import React from 'react'
+import { FormatAlignCenter } from '@material-ui/icons';
+import React, { useContext } from 'react'
+import GlobalStateContext from '../../context/GlobalStateContext';
+import useProtectedPage from '../../hooks/useProtectedPage';
 import { CardStyled } from './styles'
 
 
 
 export default function BuyHistory () {
-    const fakeList =[{restaurant: "burguer", orderDate: "23 de Maio 2020", total: 70},
-                    {restaurant: "burguer", orderDate: "23 de Maio 2020", total: 70},
-                    {restaurant: "burguer", orderDate: "23 de Maio 2020", total: 70}]
+    const { states, requests, setters } = useContext(GlobalStateContext);
+    useProtectedPage();
+
     return(
         <div>
             <h4>Histórico de compras</h4>
-            {fakeList.map(order=>{
+            <hr />
+            {states.orderHistory.map(order=>{
                 return (
                 <CardStyled>
                     <Typography  color="primary" gutterBottom>
@@ -26,6 +30,9 @@ export default function BuyHistory () {
                     
                 </CardStyled>)
             })}
+            <div style={{alignItems:'center', display:'flex', justifyContent:'center'}} >
+                Nenhum pedido realizado ainda.
+            </div>
         </div>
     )
 }

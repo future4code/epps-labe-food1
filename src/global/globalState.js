@@ -1,39 +1,49 @@
 import React, { useState } from "react";
 import axios from "axios";
 import GlobalStateContext from "../context/GlobalStateContext";
-import { BASE_URL } from '../constants/baseUrl'
+import { BASE_URL,appName } from '../constants/baseUrl'
+import { goToFeed, goToRestaurantPage } from "../routes/Coordinator";
+import { useHistory } from "react-router-dom";
 
 const GlobalState = (props) => {
-    const [restaurantes, setRestaurantes] = useState([])
     const [restauranteDetails, setRestauranteDetails] = useState([])
+    const [restaurantes, setRestaurantes] = useState([])
+    const [orderHistory, setOrderHistory] = useState([])
+    const [deliveryTime, setdeliveryTime] = useState()
+    const [shipping, setShipping] = useState()
     const [profile, setProfile] = useState([])
     const [profileAdress, setProfileAdress] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
+    const history = useHistory();
 
     const login = (form) => {
-        axios.post(`${BASE_URL}/login`, form)
+        axios.post(`${BASE_URL}/${appName}/login`, form)
             .then((res) => {
                 localStorage.setItem("token", res.data.token)
                 window.alert(`Bem Vindo ${res.data.user.name}`)
+                console.log('res', res)
             })
             .catch((err) => {
                 console.log(err)
+                console.log('form', form)
                 window.alert("Usuario ou Senha incorreta!")
             })
     };
 
     const signUp = (form) => {
-        axios.post(`${BASE_URL}/signup`, form)
+        axios.post(`${BASE_URL}/${appName}/signup`, form)
             .then((res) => {
                 window.alert(`Bem Vindo ${res.data.user.name}`)
                 localStorage.setItem("token", res.data.token)
             })
             .catch((err) => {
+                console.log('form', form)
                 console.log(err)
-                window.alert("Usuario ou Senha incorreta!")
+                window.alert(`${err}`)
             })
     };
     const upDateProfile = (form,id) => {
-        axios.post(`${BASE_URL}/restaurants/${id}/order`, form)
+        axios.post(`${BASE_URL}/${appName}/restaurants/${id}/order`, form)
             .then((res) => {
                 window.alert(`Bem Vindo ${res.data.user.name}`)
                 localStorage.setItem("token", res.data.token)
@@ -44,26 +54,26 @@ const GlobalState = (props) => {
             })
     };
 
-    const getRestaurantes = () => {
-        axios.get(`${BASE_URL}/restaurants`,
-            {
-                headers: {
-                    Authorization: localStorage.getItem("token")
-                }
-            }
-        )
-            .then((res) => {
-                setRestaurantes(res.data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    };
+    // const getRestaurantes = () => {
+    //     axios.get(`${BASE_URL}/restaurants`,
+    //         {
+    //             headers: {
+    //                 auth: localStorage.getItem("token")
+    //             }
+    //         }
+    //     )
+    //         .then((res) => {
+    //             setRestaurantes(res.data)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //         })
+    // };
     const getOrder = () => {
-        axios.get(`${BASE_URL}/orders/history`,
+        axios.get(`${BASE_URL}/${appName}/orders/history`,
             {
                 headers: {
-                    Authorization: localStorage.getItem("token")
+                    auth: localStorage.getItem("token")
                 }
             }
         )
@@ -75,14 +85,15 @@ const GlobalState = (props) => {
             })
     };
     const getOrderHistory = () => {
-        axios.get(`${BASE_URL}/active-order`,
+        axios.get(`${BASE_URL}/${appName}/active-order`,
             {
                 headers: {
-                    Authorization: localStorage.getItem("token")
+                    auth: localStorage.getItem("token")
                 }
             }
         )
             .then((res) => {
+                console.log('res.data', res.data)
                 setRestaurantes(res.data)
             })
             .catch((err) => {
@@ -90,40 +101,44 @@ const GlobalState = (props) => {
             })
     };
     const getRestaurantesDetails = (id) => {
-        axios.get(`${BASE_URL}/restaurants${id}`,
+        axios.get(`${BASE_URL}/${appName}/restaurants/${id}`,
             {
                 headers: {
-                    Authorization: localStorage.getItem("token")
+                    auth: localStorage.getItem("token")
                 }
             }
         )
             .then((res) => {
-                setRestauranteDetails(res.data)
+                setRestauranteDetails(res.data.restaurant)
+                console.log('res.data', res.data.restaurant)
+                setIsLoading(false)
             })
             .catch((err) => {
                 console.log(err)
+                console.log('id', id)
             })
     };
     const getProfile = (id) => {
-        axios.get(`${BASE_URL}/profile`,
+        axios.get(`${BASE_URL}/${appName}/profile`,
             {
                 headers: {
-                    Authorization: localStorage.getItem("token")
+                    auth: localStorage.getItem("token")
                 }
             }
         )
             .then((res) => {
-                setProfile(res.data)
+                setProfile(res.data.user)
+                console.log('res.data', res.data.user)
             })
             .catch((err) => {
                 console.log(err)
             })
     };
     const addAdress = (form) => {
-        axios.put(`${BASE_URL}/address`, form,
+        axios.put(`${BASE_URL}/${appName}/address`, form,
             {
                 headers: {
-                    Authorization: localStorage.getItem("token")
+                    auth: localStorage.getItem("token")
                 }
             })
             .then((res) => {
@@ -136,11 +151,11 @@ const GlobalState = (props) => {
             })
     };
 
-    const getProfileAdress = (id) => {
-        axios.get(`${BASE_URL}/profile/address`,
+    const getProfileAdress = () => {
+        axios.get(`${BASE_URL}/${appName}/address`,
             {
                 headers: {
-                    Authorization: localStorage.getItem("token")
+                    auth: localStorage.getItem("token")
                 }
             }
         )
@@ -153,10 +168,10 @@ const GlobalState = (props) => {
     };
 
     const updateProfile = (id) => {
-        axios.put(`${BASE_URL}/profile`,
+        axios.put(`${BASE_URL}/${appName}/profile`,
             {
                 headers: {
-                    Authorization: localStorage.getItem("token")
+                    auth: localStorage.getItem("token")
                 }
             }
         )
@@ -168,27 +183,10 @@ const GlobalState = (props) => {
             })
     };
 
-    //   const getPostList = () => {
-    //     axios.get(`${baseUrl}/posts`,
-    //     {
-    //       headers: {
-    //         Authorization: localStorage.getItem("token")
-    //       }
-    //     }
-    //     )
-    //     .then((res) => {
-    //       setPostList(res.data.posts)
-    //      })
-    //     .catch((err) => {
-    //       console.log(err)
-    //       })
-    //   };
 
-
-
-    const states = {};
-    const setters = {};
-    const requests = { login, signUp };
+    const states = {restauranteDetails,isLoading,deliveryTime,shipping,profile,orderHistory};
+    const setters = {setdeliveryTime,setShipping};
+    const requests = { login, signUp,getRestaurantesDetails,updateProfile,getProfileAdress,addAdress,getProfile,getOrderHistory};
     const data = { states, setters, requests };
 
     return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -8,6 +8,7 @@ import {
   goToBuyCart,
   goToProfilePage,
 } from "../../routes/Coordinator";
+import GlobalStateContext from "../../context/GlobalStateContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Footer() {
+  const { states, requests, setters } = useContext(GlobalStateContext);
   const history = useHistory();
   const classes = useStyles();
 
@@ -45,7 +47,7 @@ export default function Footer() {
               alt="Buy Cart"
             />
           </Button>
-          <Button onClick={() => goToProfilePage(history)}>
+          <Button onClick={() => goToProfilePage(history) || requests.getProfile()|| requests.getOrderHistory()}>
             <img
               src="https://cdn.zeplin.io/5dcc566ddc1332bf7fb4f450/assets/14952B60-73C1-4CB5-A219-C37F0F9640B5.svg"
               alt="Person"

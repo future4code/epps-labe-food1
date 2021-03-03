@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -18,13 +18,22 @@ import {
   OutlinedInput
 } from "@material-ui/core";
 import clsx from "clsx";
+import GlobalStateContext from "../../context/GlobalStateContext";
+import useForm from "../../hooks/useForm";
+import useProtectedPage from "../../hooks/useProtectedPage";
+import { goToSignUp } from "../../routes/Coordinator";
+import { useHistory } from "react-router-dom";
+
+
+
 
 function Copyright() {
+  useProtectedPage();
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Future Eats
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -44,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", 
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -53,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function LoginForm() {
+  const history = useHistory()
   const classes = useStyles();
   const [values, setValues] = React.useState({
     password: "",
@@ -68,6 +78,14 @@ export default function LoginForm() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const { states, requests, setters } = useContext(GlobalStateContext);
+  const [form, onChange, clear] = useForm({ email: "", password: "" });
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    requests.login(form)
+    clear();
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -78,7 +96,7 @@ export default function LoginForm() {
         <Typography component="h1" variant="h5">
           Entrar
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleClick} className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -87,52 +105,56 @@ export default function LoginForm() {
             id="email"
             label="email@email.com"
             name="email"
+            value={form.email}
+            onChange={onChange}
             autoComplete="email"
             autoFocus
           />
 
 
-<FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-          <InputLabel >Senha</InputLabel>
-          <ContainerInput>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            required
-            fullWidth
-            name="password"
-            type={values.showPassword ? 'text' : 'password'}
-            value={values.password}
-            onChange={handleChange('password')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-          </ContainerInput>
-        </FormControl>
+          <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+            <InputLabel >Senha</InputLabel>
+            <ContainerInput>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                required
+                fullWidth
+                name="password"
+                type={values.showPassword ? 'text' : 'password'}
+                value={values.password}
+                onChange={handleChange('password')}
+                value={form.password}
+                onChange={onChange}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </ContainerInput>
+          </FormControl>
 
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color={"primary"}
-             text={"neutralColor"}
+            text={"neutralColor"}
             className={classes.submit}
           >
             Entrar
           </Button>
-          <Button type="submit" fullWidth color={"neutralColor"}>
-            Não possui cadastro? Clique aqui.
-          </Button>
         </form>
+        <Button onClick={() => goToSignUp(history)} type="submit" fullWidth color={"neutralColor"}>
+          Não possui cadastro? Clique aqui.
+          </Button>
       </div>
       <Box mt={8}>
         <Copyright />
