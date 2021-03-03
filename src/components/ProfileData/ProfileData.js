@@ -9,7 +9,7 @@ import GlobalStateContext from '../../context/GlobalStateContext';
 export default function ProfileData (props) {
     const { states, requests, setters } = useContext(GlobalStateContext);
     const history = useHistory()
-    useProtectedPage();
+    // useProtectedPage();
 
     const editPersolnalInfo = () =>{
         goToSignUp(history) //fazer lógica para não haver nova senha e mudar button Criar para Salvar. Além disso trocar header e path. Troca o axios para update profile

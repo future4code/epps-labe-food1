@@ -53,7 +53,7 @@ export default function Feed() {
   const showPage = () => {
     return (
 
-      filterFeed.length >= 0 ? filterFeed().map((restaurant) => {
+      filterFeed().length > 0 ? filterFeed().map((restaurant) => {
         return (
           <div onClick={() => { requests.getRestaurantesDetails(restaurant.id) || history.push(`/restaurants/${restaurant.id}`) || setters.setdeliveryTime(restaurant.deliveryTime) || setters.setShipping(restaurant.shipping) }}>
             <MediaCardFeed
@@ -88,7 +88,7 @@ export default function Feed() {
           style={{ minWidth: "350px" }}
         />
       </div>
-      {console.log('filterFeed.length', filterFeed.length)}
+      {console.log('filterFeed.length', filterFeed().length)}
       <h1 align="center">Restaurantes</h1>
       <NavBar>
         <ul>
