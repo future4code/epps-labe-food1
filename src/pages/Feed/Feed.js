@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import MediaCardFeed from "../../components/Feed/MediaCardFeed";
 import axios from "axios";
-import { BASE_URL, appName } from "../../constants/baseUrl";
+import { baseUrl, appName } from "../../constants/baseUrl";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
 import { useHistory } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { TextField } from "@material-ui/core";
 import { NavBar } from "../../components/Feed/style";
+import Loading from "../../assets/loading.gif";
 
 export default function Feed() {
   const [restaurants, setRestaurants] = useState([]);
   const [inputTitle, setInputTitle] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -21,11 +23,13 @@ export default function Feed() {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFHbEpCUzdVb0VZVk1peWdUR05LIiwibmFtZSI6Ikp1bGlhbmEiLCJlbWFpbCI6Imp1bGlhbmEtcGVkcm9zb0BnbWFpbC5jb20iLCJjcGYiOiIyMjIuMjIyLjIyMi0yMiIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBBbG1pcmFudGUsIDIzLCAxMyAtIEJ1dGFudMOjIiwiaWF0IjoxNjE0Njk3NzgxfQ.DGrIMwdbFy9686I0aUOAIJODbfYLEyNih_MvyjRbpj0";
 
+    setIsLoading(true);
     axios
-      .get(`${BASE_URL}/${appName}/restaurants`, { headers: { auth: token } })
+      .get(`${baseUrl}/${appName}/restaurants`, { headers: { auth: token } })
       .then((res) => {
         console.log(res.data.restaurants);
         setRestaurants(res.data.restaurants);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err.res);
@@ -53,7 +57,7 @@ export default function Feed() {
           onChange={onChangeInputTitle}
           value={inputTitle}
           placeholder="Restaurante"
-          style={{ minWidth: "27vw" }}
+          style={{ minWidth: "350px" }}
         />
       </div>
 
@@ -74,6 +78,8 @@ export default function Feed() {
           </li>
         </ul>
       </NavBar>
+
+      {isLoading && <img style={{ margin: "0 47%" }} src={Loading} />}
       {filterFeed().map((restaurant) => {
         return (
           <div>
@@ -89,7 +95,7 @@ export default function Feed() {
           </div>
         );
       })}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
