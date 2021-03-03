@@ -30,6 +30,14 @@ export const goToProfilePage = (history) => {
     history.push("/profile")
 } 
 
+
 export const goBack = (history) => {
     history.goBack()
+}
+export const goToAddressEdit = (history) => {
+    history.push("/edit-address")
+}
+
+export const goToEditProfile = (history) => {
+    history.push("/edit-profile")
 }

@@ -43,6 +43,12 @@ export default function Router() {
           <Route exact path="/profile">
             <ProfilePage />
           </Route>
+          <Route exact path="/edit-profile">
+            <SignUp />
+          </Route>
+          <Route exact path="/edit-address">
+            <AdressRegister />
+          </Route>
           <Route >
             <Error />
           </Route>
