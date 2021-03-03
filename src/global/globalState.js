@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import GlobalStateContext from "../context/GlobalStateContext";
-import { baseUrl } from '../constants/baseUrl'
+import { BASE_URL } from '../constants/baseUrl'
 
 const GlobalState = (props) => {
     const [restaurantes, setRestaurantes] = useState([])
@@ -10,7 +10,7 @@ const GlobalState = (props) => {
     const [profileAdress, setProfileAdress] = useState([])
 
     const login = (form) => {
-        axios.post(`${baseUrl}/login`, form)
+        axios.post(`${BASE_URL}/login`, form)
             .then((res) => {
                 localStorage.setItem("token", res.data.token)
                 window.alert(`Bem Vindo ${res.data.user.name}`)
@@ -22,7 +22,7 @@ const GlobalState = (props) => {
     };
 
     const signUp = (form) => {
-        axios.post(`${baseUrl}/signup`, form)
+        axios.post(`${BASE_URL}/signup`, form)
             .then((res) => {
                 window.alert(`Bem Vindo ${res.data.user.name}`)
                 localStorage.setItem("token", res.data.token)
@@ -33,7 +33,7 @@ const GlobalState = (props) => {
             })
     };
     const upDateProfile = (form,id) => {
-        axios.post(`${baseUrl}/restaurants/${id}/order`, form)
+        axios.post(`${BASE_URL}/restaurants/${id}/order`, form)
             .then((res) => {
                 window.alert(`Bem Vindo ${res.data.user.name}`)
                 localStorage.setItem("token", res.data.token)
@@ -45,7 +45,7 @@ const GlobalState = (props) => {
     };
 
     const getRestaurantes = () => {
-        axios.get(`${baseUrl}/restaurants`,
+        axios.get(`${BASE_URL}/restaurants`,
             {
                 headers: {
                     Authorization: localStorage.getItem("token")
@@ -60,7 +60,7 @@ const GlobalState = (props) => {
             })
     };
     const getOrder = () => {
-        axios.get(`${baseUrl}/orders/history`,
+        axios.get(`${BASE_URL}/orders/history`,
             {
                 headers: {
                     Authorization: localStorage.getItem("token")
@@ -75,7 +75,7 @@ const GlobalState = (props) => {
             })
     };
     const getOrderHistory = () => {
-        axios.get(`${baseUrl}/active-order`,
+        axios.get(`${BASE_URL}/active-order`,
             {
                 headers: {
                     Authorization: localStorage.getItem("token")
@@ -90,7 +90,7 @@ const GlobalState = (props) => {
             })
     };
     const getRestaurantesDetails = (id) => {
-        axios.get(`${baseUrl}/restaurants${id}`,
+        axios.get(`${BASE_URL}/restaurants${id}`,
             {
                 headers: {
                     Authorization: localStorage.getItem("token")
@@ -105,7 +105,7 @@ const GlobalState = (props) => {
             })
     };
     const getProfile = (id) => {
-        axios.get(`${baseUrl}/profile`,
+        axios.get(`${BASE_URL}/profile`,
             {
                 headers: {
                     Authorization: localStorage.getItem("token")
@@ -120,7 +120,7 @@ const GlobalState = (props) => {
             })
     };
     const addAdress = (form) => {
-        axios.put(`${baseUrl}/address`, form,
+        axios.put(`${BASE_URL}/address`, form,
             {
                 headers: {
                     Authorization: localStorage.getItem("token")
@@ -137,7 +137,7 @@ const GlobalState = (props) => {
     };
 
     const getProfileAdress = (id) => {
-        axios.get(`${baseUrl}/profile/address`,
+        axios.get(`${BASE_URL}/profile/address`,
             {
                 headers: {
                     Authorization: localStorage.getItem("token")
@@ -153,7 +153,7 @@ const GlobalState = (props) => {
     };
 
     const updateProfile = (id) => {
-        axios.put(`${baseUrl}/profile`,
+        axios.put(`${BASE_URL}/profile`,
             {
                 headers: {
                     Authorization: localStorage.getItem("token")

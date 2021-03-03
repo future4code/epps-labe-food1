@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -54,6 +54,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUpForm() {
+
+  //mudar para página de editar profile
+  const [token, setToken] = useState("")
+  useEffect(()=>{
+    setToken(localStorage.getItem("token"))
+  },[]) // provisório para teste
+
   const classes = useStyles();
   const [values, setValues] = React.useState({
     password: "",
@@ -85,17 +92,20 @@ export default function SignUpForm() {
     setValuesConfirme({ ...valuesConfirme, [prop]: event.target.value });
   };
 
+  
+  
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Title>
+        { !token && <Title>
           <LogoTitle src={Logo} />
           {/* <h1>Future Eats</h1> */}
-        </Title>
+        </Title>}
 
         <Typography component="h1" variant="h5">
-          Cadastrar
+          {!token && "Cadastrar"}
         </Typography>
 
         <form className={classes.form} noValidate>
@@ -138,6 +148,7 @@ export default function SignUpForm() {
             autoFocus
           />
 
+        { !token &&
           <FormControl
             className={clsx(classes.margin, classes.textField)}
             variant="outlined"
@@ -168,7 +179,9 @@ export default function SignUpForm() {
               />
             </ContainerInput>
           </FormControl>
+          }
 
+          { !token &&
           <FormControl variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">
               Confirmar Senha
@@ -196,7 +209,7 @@ export default function SignUpForm() {
               />
             </ContainerInput>
           </FormControl>
-
+}
           <Button
             type="submit"
             fullWidth
