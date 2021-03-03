@@ -167,8 +167,14 @@ const GlobalState = (props) => {
             })
     };
 
-    const updateProfile = (id) => {
-        axios.put(`${BASE_URL}/${appName}/profile`,
+     const updateProfile = (form, history) => {
+       const body={
+            name: form.name,
+	        email: form.email,
+            cpf: form.cpf   
+        }
+        console.log(form, body)
+        axios.put(`${BASE_URL}/${appName}/profile`, body,
             {
                 headers: {
                     auth: localStorage.getItem("token")
@@ -177,6 +183,7 @@ const GlobalState = (props) => {
         )
             .then((res) => {
                 setProfileAdress(res.data)
+                // goToAddressEdit(history)
             })
             .catch((err) => {
                 console.log(err)

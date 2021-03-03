@@ -21,8 +21,9 @@ import {
 } from "@material-ui/core";
 import clsx from "clsx";
 import Logo from "../../assets/logo.png"
-import { goToFeed } from "../../routes/Coordinator";
+import { goToAddressEdit } from "../../routes/Coordinator";
 import { useHistory } from "react-router-dom";
+import {updateProfile} from "../../Services/use"
 
 function Copyright() {
   return (
@@ -104,12 +105,18 @@ export default function SignUpForm() {
 
   const handleClick = (event) => {
     event.preventDefault()
-    requests.signUp(formSing)
-    clearFields()
-    if (token = true) {
-            history.push("/adress-register")
+    if(!token){
+        requests.signUp(formSing)
+      clearFields()
+      if (token === true) {
+          history.push("/adress-register")
+      }
+    }else{
+      updateProfile(formSing, history)
+    
     }
-  };
+  
+};
 
   
 
@@ -242,7 +249,7 @@ export default function SignUpForm() {
             color="primary"
             className={classes.submit}
             >
-            Criar
+            { !token ? "Criar" : "Salvar alterações"}
           </Button>
         </form>
       </div>
