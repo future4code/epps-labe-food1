@@ -1,31 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MediaCardFeed from "../../components/Feed/MediaCardFeed";
 import axios from "axios";
-import { baseUrl, appName } from "../../constants/baseUrl";
-import { useProtectedPage } from "../../hooks/useProtectedPage";
+import { BASE_URL, appName } from "../../constants/baseUrl";
+import useProtectedPage from "../../hooks/useProtectedPage";
 import { useHistory } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { TextField } from "@material-ui/core";
 import { NavBar } from "../../components/Feed/style";
 import Loading from "../../assets/loading.gif";
+import GlobalStateContext from "../../context/GlobalStateContext";
+import { goToRestaurantPage } from "../../routes/Coordinator";
 
 export default function Feed() {
   const [restaurants, setRestaurants] = useState([]);
   const [inputTitle, setInputTitle] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { states, requests, setters } = useContext(GlobalStateContext);
   const history = useHistory();
+  // useProtectedPage();
 
   useEffect(() => {
     getRestaurants();
   }, []);
 
   const getRestaurants = () => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InFHbEpCUzdVb0VZVk1peWdUR05LIiwibmFtZSI6Ikp1bGlhbmEiLCJlbWFpbCI6Imp1bGlhbmEtcGVkcm9zb0BnbWFpbC5jb20iLCJjcGYiOiIyMjIuMjIyLjIyMi0yMiIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBBbG1pcmFudGUsIDIzLCAxMyAtIEJ1dGFudMOjIiwiaWF0IjoxNjE0Njk3NzgxfQ.DGrIMwdbFy9686I0aUOAIJODbfYLEyNih_MvyjRbpj0";
+    const token = localStorage.getItem("token")
 
     setIsLoading(true);
     axios
-      .get(`${baseUrl}/${appName}/restaurants`, { headers: { auth: token } })
+      .get(`${BASE_URL}/${appName}/restaurants`, { headers: { auth: token } })
       .then((res) => {
         console.log(res.data.restaurants);
         setRestaurants(res.data.restaurants);
@@ -38,6 +41,7 @@ export default function Feed() {
 
   const onChangeInputTitle = (e) => {
     setInputTitle(e.target.value);
+
   };
 
   const filterFeed = () => {
@@ -46,6 +50,30 @@ export default function Feed() {
       return title.indexOf(inputTitle.toLowerCase()) > -1;
     });
   };
+  const showPage = () => {
+    return (
+
+      filterFeed.length >= 0 ? filterFeed().map((restaurant) => {
+        return (
+          <div onClick={() => { requests.getRestaurantesDetails(restaurant.id) || history.push(`/restaurants/${restaurant.id}`) || setters.setdeliveryTime(restaurant.deliveryTime) || setters.setShipping(restaurant.shipping) }}>
+            <MediaCardFeed
+              key={restaurant.id}
+              category={restaurant.category}
+              logoUrl={restaurant.logoUrl}
+              name={restaurant.name}
+              deliveryTime={restaurant.deliveryTime}
+              shipping={restaurant.shipping}
+            ></MediaCardFeed>
+            <br />
+          </div>
+        )
+      }) :
+        < div  style={{ display: "flex", justifyContent: "center", margin: "2rem" }} >
+          Nenhum resultado encontrado.
+        </div >
+    )
+  };
+
 
   return (
     <>
@@ -60,7 +88,7 @@ export default function Feed() {
           style={{ minWidth: "350px" }}
         />
       </div>
-
+      {console.log('filterFeed.length', filterFeed.length)}
       <h1 align="center">Restaurantes</h1>
       <NavBar>
         <ul>
@@ -78,23 +106,8 @@ export default function Feed() {
           </li>
         </ul>
       </NavBar>
-
       {isLoading && <img style={{ margin: "0 47%" }} src={Loading} />}
-      {filterFeed().map((restaurant) => {
-        return (
-          <div>
-            <MediaCardFeed
-              key={restaurant.id}
-              category={restaurant.category}
-              logoUrl={restaurant.logoUrl}
-              name={restaurant.name}
-              deliveryTime={restaurant.deliveryTime}
-              shipping={restaurant.shipping}
-            ></MediaCardFeed>
-            <br />
-          </div>
-        );
-      })}
+      {showPage()}
       <Footer />
     </>
   );
