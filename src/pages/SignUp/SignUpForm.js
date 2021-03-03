@@ -106,7 +106,7 @@ export default function SignUpForm() {
     event.preventDefault()
     requests.signUp(formSing)
     clearFields()
-    if (token = true) {
+    if (token = false) {
             history.push("/adress-register")
     }
   };
@@ -179,7 +179,7 @@ export default function SignUpForm() {
             <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
             <ContainerInput>
               <OutlinedInput
-                id="outlined-adornment-password"
+                label= "Senha"
                 required
                 fullWidth
                 name="password"
@@ -209,11 +209,12 @@ export default function SignUpForm() {
           { !token &&
           <FormControl variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">
-              Confirmar Senha
+              Confirmar
             </InputLabel>
             <ContainerInput>
               <OutlinedInput
-                id="outlined-adornment-password"
+                // error
+                label= "Confirmar*"
                 required
                 fullWidth
                 name="confirm"
