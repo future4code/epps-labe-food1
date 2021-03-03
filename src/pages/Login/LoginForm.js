@@ -111,12 +111,11 @@ export default function LoginForm() {
             autoFocus
           />
 
-
           <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
             <InputLabel >Senha</InputLabel>
             <ContainerInput>
               <OutlinedInput
-                id="outlined-adornment-password"
+                label= "Senha"
                 required
                 fullWidth
                 name="password"
