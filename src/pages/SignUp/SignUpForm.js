@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -11,6 +11,8 @@ import { ContainerInput, Title,LogoTitle } from "../SignUp/styles";
 import { FormControl } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import GlobalStateContext from "../../context/GlobalStateContext";
+import useForm from '../../hooks/useForm'
 import {
   InputLabel,
   InputAdornment,
@@ -19,13 +21,15 @@ import {
 } from "@material-ui/core";
 import clsx from "clsx";
 import Logo from "../../assets/logo.png"
+import { goToFeed } from "../../routes/Coordinator";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Future Eats
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -54,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUpForm() {
-
+  const history = useHistory()
   //mudar para página de editar profile
   const [token, setToken] = useState("")
   useEffect(()=>{
@@ -79,6 +83,7 @@ export default function SignUpForm() {
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
+    
   };
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -89,10 +94,23 @@ export default function SignUpForm() {
   };
 
   const handleConfirmation = (prop) => (event) => {
-    setValuesConfirme({ ...valuesConfirme, [prop]: event.target.value });
+    setValuesConfirme({ ...valuesConfirme, [prop]: event.target.value })
+    
   };
 
-  
+  const { states, requests, setters } = useContext(GlobalStateContext);
+  const [formSing, onChange, clearFields] = useForm({ name: "", email: "", cpf: "", password: "" });
+
+
+  const handleClick = (event) => {
+    event.preventDefault()
+    requests.signUp(formSing)
+    clearFields()
+    if (token = true) {
+            history.push("/adress-register")
+    }
+  };
+
   
 
   return (
@@ -101,14 +119,13 @@ export default function SignUpForm() {
       <div className={classes.paper}>
         { !token && <Title>
           <LogoTitle src={Logo} />
-          {/* <h1>Future Eats</h1> */}
-        </Title>}
+          </Title>}
 
         <Typography component="h1" variant="h5">
           {!token && "Cadastrar"}
         </Typography>
 
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleClick} className={classes.form}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -118,6 +135,8 @@ export default function SignUpForm() {
             label="Nome"
             placeholder="Nome e sobrenome"
             name="name"
+            value={formSing.name}
+            onChange={onChange}
             pattern={"^.{3,}"}
             title={"Mínimo 3 caracteres"}
             autoComplete="name"
@@ -132,6 +151,8 @@ export default function SignUpForm() {
             label="E-mail"
             placeholder="email@email.com"
             name="email"
+            value={formSing.email}
+            onChange={onChange}
             autoComplete="email"
             autoFocus
           />
@@ -143,7 +164,9 @@ export default function SignUpForm() {
             id="CPF"
             label="CPF"
             placeholder="000.000.000-00"
-            name="CPF"
+            name="cpf"
+            value={formSing.cpf}
+            onChange={onChange}
             autoComplete="CPF"
             autoFocus
           />
@@ -164,6 +187,8 @@ export default function SignUpForm() {
                 type={values.showPassword ? "text" : "password"}
                 value={values.password}
                 onChange={handleChange("password")}
+                value={formSing.password}
+                onChange={onChange}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -216,7 +241,7 @@ export default function SignUpForm() {
             variant="contained"
             color="primary"
             className={classes.submit}
-          >
+            >
             Criar
           </Button>
         </form>
