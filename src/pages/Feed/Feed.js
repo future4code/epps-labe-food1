@@ -78,7 +78,7 @@ export default function Feed() {
   return (
     <>
       <div
-        style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
+        style={{ display: "flex", justifyContent: "center", marginTop: "5rem" }}
       >
         <TextField
           variant="outlined"

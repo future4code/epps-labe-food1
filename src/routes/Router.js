@@ -17,7 +17,7 @@ export default function Router() {
   return (
     <GlobalState>
       <BrowserRouter>
-        {/* <Header /> */}
+        <Header />
         <Switch>
           <Route exact path="/">
             <FirstScreen />
