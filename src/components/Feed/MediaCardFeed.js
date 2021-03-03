@@ -6,7 +6,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { OrderTitle } from "../Restaurant/styles";
-import Footer from "../Footer/Footer";
 
 const useStyles = makeStyles({
   root: {

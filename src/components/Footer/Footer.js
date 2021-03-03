@@ -14,9 +14,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
+    position: 'fixed',
+    bottom: '0',
+    zIndex: "1",
+    width: "100%",
+    minWidth: "350px"
   },
   footer: {
-    padding: theme.spacing(2, 2),
+    padding: theme.spacing(1, 1),
     marginTop: "auto",
     backgroundColor: "white",
   },
@@ -35,7 +40,7 @@ export default function Footer() {
           maxWidth="sm"
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          <Button onClick={() => goToFeed(history)}>
+          <Button onClick={() => goToFeed(history)} textColor={"primary"}>
             <img
               src="https://cdn.zeplin.io/5dcc566ddc1332bf7fb4f450/assets/8CD04B9B-73CB-40DC-AE16-63CE142EF1F4.svg"
               alt="Home"

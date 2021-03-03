@@ -29,3 +29,7 @@ export const goToRestaurantPage = (history, restaurantId) => {
 export const goToProfilePage = (history) => {
     history.push("/profile")
 } 
+
+export const goBack = (history) => {
+    history.goBack()
+}
