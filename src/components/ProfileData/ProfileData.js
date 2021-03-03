@@ -1,8 +1,8 @@
-import axios from 'axios'
 import React from 'react'
 import { useHistory } from 'react-router'
 import { goToAdressRegister, goToSignUp } from '../../routes/Coordinator'
-import { DataContainer } from './styles'
+import { DataContainer, H4 } from './styles'
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 
 export default function ProfileData (props) {
     const history = useHistory()
@@ -26,7 +26,7 @@ export default function ProfileData (props) {
                         <p>{props.cpf}</p>
                     </div>
                     <div>
-                        <button onClick={editPersolnalInfo}>editar</button>
+                        <EditOutlinedIcon onClick={editPersolnalInfo}/>
                     </div>
                 </DataContainer>
             )}
@@ -35,14 +35,13 @@ export default function ProfileData (props) {
             {props.address && (
                 <DataContainer>
                     <div>
+                        <H4>Endereço Cadastrado</H4>
                         <p>{props.address}</p>
                     </div>  
                     <div>
-                        <button onClick={editAddressInfo}>editar</button>
+                        <EditOutlinedIcon onClick={editAddressInfo}/>
                     </div>
                 </DataContainer>
-                
-     
             )}
         </div>
     )
