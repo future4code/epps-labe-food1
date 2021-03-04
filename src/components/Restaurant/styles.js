@@ -64,7 +64,9 @@ export const OrderImage = styled.img`
   width: 96px;
   height: 112px;
   margin: 0 16px 0 0;
-  object-fit: contain;
+  border-radius: 7px 0 0 7px;
+  border: none;
+  /* object-fit: contain; */
 `;
 
 export const OrderPrice = styled.div`

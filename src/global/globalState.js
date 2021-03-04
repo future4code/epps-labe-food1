@@ -20,7 +20,7 @@ const GlobalState = (props) => {
         axios.post(`${BASE_URL}/${appName}/login`, form)
             .then((res) => {
                 localStorage.setItem("token", res.data.token)
-                window.alert(`Bem Vindo ${res.data.user.name}`)
+                window.alert(`Bem-vindo(a), ${res.data.user.name}!`)
                 console.log('res', res)
             })
             .catch((err) => {
@@ -33,7 +33,7 @@ const GlobalState = (props) => {
     const signUp = (form) => {
         axios.post(`${BASE_URL}/${appName}/signup`, form)
             .then((res) => {
-                window.alert(`Bem Vindo ${res.data.user.name}`)
+                window.alert(`Bem-vindo(a), ${res.data.user.name}!`)
                 localStorage.setItem("token", res.data.token)
             })
             .catch((err) => {
