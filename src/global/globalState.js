@@ -13,7 +13,25 @@ const GlobalState = (props) => {
     const [profile, setProfile] = useState([])
     const [profileAdress, setProfileAdress] = useState([])
     const [isLoading, setIsLoading] = useState(true);
+    const [cart, setCart] = useState([])
     const history = useHistory();
+
+
+
+    const addItemToCart = (newItem) => {
+        const index = cart.findIndex((i) => i.id === newItem.id);
+        let newCart = [...cart];
+        if (index === -1) {
+          newCart.push({ ...newItem, amount: 1 });
+        } else {
+          newCart[index].amount += 1;
+        }
+        setCart(newCart);
+        alert(`${newItem.name} foi adicionado ao seu carrinho!`);
+        console.log('object', newCart)
+      };
+
+      
 
 
     const login = (form) => {
@@ -110,12 +128,12 @@ const GlobalState = (props) => {
         )
             .then((res) => {
                 setRestauranteDetails(res.data.restaurant)
-                console.log('res.data', res.data.restaurant)
+                console.log('res.data', isLoading)
                 setIsLoading(false)
+                console.log('res.data', isLoading)
             })
             .catch((err) => {
                 console.log(err)
-                console.log('id', id)
             })
     };
     const getProfile = (id) => {
@@ -205,7 +223,7 @@ const GlobalState = (props) => {
 
     const states = { restauranteDetails, isLoading, deliveryTime, shipping, profile, orderHistory };
     const setters = { setdeliveryTime, setShipping };
-    const requests = { login, signUp, getRestaurantesDetails, updateProfile, getProfileAdress, addAdress, getProfile, getOrderHistory };
+    const requests = { addItemToCart, login, signUp, getRestaurantesDetails, updateProfile, getProfileAdress, addAdress, getProfile, getOrderHistory };
     const data = { states, setters, requests };
 
     return (

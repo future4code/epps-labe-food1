@@ -217,9 +217,10 @@ export default function SignUpForm() {
           </InputLabel>
           <ContainerInput>
             <OutlinedInput
+              error={false}
               id="confirm" 
               // error={false}
-              error
+//               error
               id="outlined-error-helper-text"
               helperText="Deve ser a mesma que a anterior"
               label= "Confirmar*"

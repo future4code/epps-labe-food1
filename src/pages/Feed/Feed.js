@@ -68,7 +68,7 @@ export default function Feed() {
           </div>
         )
       }) :
-        < div  style={{ display: "flex", justifyContent: "center", margin: "2rem" }} >
+        < div style={{ display: "flex", justifyContent: "center", margin: "2rem" }} >
           Nenhum resultado encontrado.
         </div >
     )
@@ -76,7 +76,7 @@ export default function Feed() {
 
 
   return (
-    <div style={{ paddingBottom:'15%'}}>
+    <div style={{ paddingBottom: '15%' }}>
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}
       >
@@ -88,7 +88,6 @@ export default function Feed() {
           style={{ minWidth: "350px" }}
         />
       </div>
-      {console.log('filterFeed.length', filterFeed().length)}
       <h1 align="center">Restaurantes</h1>
       <NavBar>
         <ul>
