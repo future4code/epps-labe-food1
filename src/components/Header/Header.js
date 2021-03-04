@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "left",
     justifyContent: "flex-start",
-    position: "fixed",
+    // position: "fixed",
     top: "0",
     zIndex: "1",
     width: "100%",

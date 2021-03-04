@@ -24,3 +24,21 @@ export const updateProfile = (form, history) => {
             console.log(err)
         })
 };
+
+
+export const getActiveOrder = (setOrders) => {
+    axios.get(`${BASE_URL}/futureEatsA/active-order`,
+        {
+            headers: {
+                auth: localStorage.getItem("token")
+            }
+        }
+    )
+        .then((res) => {
+            console.log('res.data', res.data)
+            setOrders(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+};
