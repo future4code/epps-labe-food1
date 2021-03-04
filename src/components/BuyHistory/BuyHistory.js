@@ -13,7 +13,7 @@ export default function BuyHistory () {
 
     return(
         <div>
-            <h4>Histórico de compras</h4>
+            <h4>Histórico de pedidos</h4>
             <hr />
             {states.orderHistory.map(order=>{
                 return (
