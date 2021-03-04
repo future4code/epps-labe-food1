@@ -10,6 +10,7 @@ import Container from '@material-ui/core/Container';
 import GlobalStateContext from '../../context/GlobalStateContext';
 import useForm from '../../hooks/useForm';
 import { useHistory } from 'react-router-dom';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 function Copyright() {
 
@@ -46,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AdressRegForm() {
+  useProtectedPage();
   //mudar para página de editar profile
   const [token, setToken] = useState("")
   useEffect(()=>{

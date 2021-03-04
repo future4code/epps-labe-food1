@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 export const OrderCard = styled.div`
   display: flex;
   width: 328px;
-  height: 112px;
+  height:17vh;
   margin: 8px;
   border-radius: 8px;
   align-items: center;

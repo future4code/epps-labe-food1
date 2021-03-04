@@ -17,7 +17,7 @@ export default function Feed() {
   const [isLoading, setIsLoading] = useState(false);
   const { states, requests, setters } = useContext(GlobalStateContext);
   const history = useHistory();
-  // useProtectedPage();
+  useProtectedPage();
 
   useEffect(() => {
     getRestaurants();
@@ -76,9 +76,9 @@ export default function Feed() {
 
 
   return (
-    <>
+    <div style={{ paddingBottom:'15%'}}>
       <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "5rem" }}
+        style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}
       >
         <TextField
           variant="outlined"
@@ -109,6 +109,6 @@ export default function Feed() {
       {isLoading && <img style={{ margin: "0 47%" }} src={Loading} />}
       {showPage()}
       <Footer />
-    </>
+    </div>
   );
 }

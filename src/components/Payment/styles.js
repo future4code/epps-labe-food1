@@ -20,6 +20,6 @@ export const Container = styled.div`
 export const DivButton = styled.div`
     position: fixed;
     bottom: 15vh;
-    width:100%;
+    width:96vw;
 
 `

@@ -14,8 +14,8 @@ import GlobalState from "../global/globalState";
 
 export default function Router() {
   return (
+    <BrowserRouter>
     <GlobalState>
-      <BrowserRouter>
         <Switch>
           <Route exact path="/">
             <FirstScreen />
@@ -55,7 +55,7 @@ export default function Router() {
             <Error />
           </Route>
         </Switch>
-      </BrowserRouter>
     </GlobalState>
+      </BrowserRouter>
   );
 }

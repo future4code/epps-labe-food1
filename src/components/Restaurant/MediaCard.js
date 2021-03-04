@@ -83,7 +83,7 @@ export default function MediaCard(props) {
                 <OrderPrice>
                   <p>R$ {item.price.toFixed(2)}</p>
                   <CardActions>
-                    <OrderButton>enviar</OrderButton>
+                    <OrderButton>Adicionar</OrderButton>
                   </CardActions>
                 </OrderPrice>
               </MainCardContent>
