@@ -217,7 +217,7 @@ export default function SignUpForm() {
           </InputLabel>
           <ContainerInput>
             <OutlinedInput
-              error
+              error={false}
               label= "Confirmar*"
               required
               fullWidth

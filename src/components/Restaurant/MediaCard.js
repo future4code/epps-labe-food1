@@ -18,6 +18,7 @@ import {
   OrderPrice,
   OrderButton,
 } from "./styles";
+import CardSelector from "../CardSelector/CardSelector";
 
 const useStyles = makeStyles({
   root: {
@@ -30,17 +31,23 @@ const useStyles = makeStyles({
 });
 
 export default function MediaCard(props) {
-  // useProtectedPage();
-  // console.log('{props.deliveryTime}', {deliveryTime})
   const classes = useStyles();
   const { states, requests, setters } = useContext(GlobalStateContext);
+  const [selectcart, setSelectcart] = useState(false);
+  const [selectedItem, setSelectedItem] = useState();
+
+  const showPage = () => {
+    return (
+      selectcart ? <CardSelector selectedItem={selectedItem}></CardSelector> : null
+    )
+  };
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
+      {showPage()}
       {states.isLoading ? <img style={{ margin: "0 47%" }} src={Loading} /> :
         <Card className={classes.root}>
-          {console.log('deliveryTime', props)}
-          <CardActionArea>
+           <CardActionArea>
             <CardMedia
               style={{ borderRadius: "8px 8px 0 0" }}
               className={classes.media}
@@ -83,7 +90,7 @@ export default function MediaCard(props) {
                 <OrderPrice>
                   <p>R$ {item.price.toFixed(2)}</p>
                   <CardActions>
-                    <OrderButton>Adicionar</OrderButton>
+                    <OrderButton onClick={() => {setSelectcart(true) ||setSelectedItem(item)}}>Adicionar</OrderButton>
                   </CardActions>
                 </OrderPrice>
               </MainCardContent>
