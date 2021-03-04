@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { ContainerInput, Title,LogoTitle } from "../SignUp/styles";
+import { ContainerInput, LogoTitle } from "../SignUp/styles";
 import { FormControl } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -23,6 +23,11 @@ import clsx from "clsx";
 import Logo from "../../assets/logo.png"
 import { goToFeed } from "../../routes/Coordinator";
 import { useHistory } from "react-router-dom";
+<<<<<<< Updated upstream
+=======
+import { updateProfile } from "../../Services/use"
+import useProtectedPage from "../../hooks/useProtectedPage";
+>>>>>>> Stashed changes
 
 function Copyright() {
   return (
@@ -61,9 +66,9 @@ export default function SignUpForm() {
   const history = useHistory()
   //mudar para página de editar profile
   const [token, setToken] = useState("")
-  useEffect(()=>{
+  useEffect(() => {
     setToken(localStorage.getItem("token"))
-  },[]) // provisório para teste
+  }, []) // provisório para teste
 
   const classes = useStyles();
   const [values, setValues] = React.useState({
@@ -75,6 +80,7 @@ export default function SignUpForm() {
     showConfirm: false,
   });
 
+  const [test, settest] = useState(false);
   const [showText, setShowText] = useState(false);
 
   const handleShowText = () => {
@@ -83,7 +89,7 @@ export default function SignUpForm() {
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
-    
+
   };
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -95,7 +101,7 @@ export default function SignUpForm() {
 
   const handleConfirmation = (prop) => (event) => {
     setValuesConfirme({ ...valuesConfirme, [prop]: event.target.value })
-    
+
   };
 
   const { states, requests, setters } = useContext(GlobalStateContext);
@@ -104,22 +110,36 @@ export default function SignUpForm() {
 
   const handleClick = (event) => {
     event.preventDefault()
+<<<<<<< Updated upstream
     requests.signUp(formSing)
     clearFields()
     if (token = true) {
             history.push("/adress-register")
     }
   };
+=======
 
-  
+    if (!token) {
+      requests.signUp(formSing)
+      clearFields()
+      if (token === true) {
+        history.push("/adress-register")
+      }
+    } else {
+      updateProfile(formSing, history)
+    }
+  };
+
+>>>>>>> Stashed changes
+
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        { !token && <Title>
+        {!token && <div>
           <LogoTitle src={Logo} />
-          </Title>}
+        </div>}
 
         <Typography component="h1" variant="h5">
           {!token && "Cadastrar"}
@@ -171,6 +191,7 @@ export default function SignUpForm() {
             autoFocus
           />
 
+<<<<<<< Updated upstream
         { !token &&
           <FormControl
             className={clsx(classes.margin, classes.textField)}
@@ -235,14 +256,86 @@ export default function SignUpForm() {
             </ContainerInput>
           </FormControl>
 }
+=======
+          {!token &&
+            <FormControl
+              className={clsx(classes.margin, classes.textField)}
+              variant="outlined"
+            >
+              <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+              <ContainerInput>
+                <OutlinedInput
+                  label="Senha"
+                  required
+                  fullWidth
+                  name="password"
+                  style={{ maxWidth: "1000px" }}
+                  type={values.showPassword ? "text" : "password"}
+                  value={values.password}
+                  onChange={handleChange("password")}
+                  value={formSing.password}
+                  onChange={onChange}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </ContainerInput>
+            </FormControl>
+          }
+
+          {!token &&
+            <FormControl variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">
+                Confirmar
+            </InputLabel>
+              <ContainerInput>
+                <OutlinedInput
+                  // error
+                  label="Confirmar*"
+                  required
+                  fullWidth
+                  name="confirm"
+                  type={showText ? "text" : "password"}
+                  value={valuesConfirme.confirm}
+                  onChange={handleConfirmation("confirm")}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleShowText}
+                        edge="end"
+                      >
+                        {showText ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </ContainerInput>
+            </FormControl>
+          }
+>>>>>>> Stashed changes
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+<<<<<<< Updated upstream
             >
             Criar
+=======
+          >
+            {!token ? "Criar" : "Salvar alterações"}
+>>>>>>> Stashed changes
           </Button>
         </form>
       </div>

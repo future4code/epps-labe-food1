@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import GlobalStateContext from "../context/GlobalStateContext";
-import { BASE_URL,appName } from '../constants/baseUrl'
-import { goToFeed, goToRestaurantPage } from "../routes/Coordinator";
+import { BASE_URL, appName } from '../constants/baseUrl'
 import { useHistory } from "react-router-dom";
 
 const GlobalState = (props) => {
@@ -16,16 +15,22 @@ const GlobalState = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
 
+
     const login = (form) => {
         axios.post(`${BASE_URL}/${appName}/login`, form)
             .then((res) => {
                 localStorage.setItem("token", res.data.token)
+<<<<<<< Updated upstream
                 window.alert(`Bem Vindo ${res.data.user.name}`)
                 console.log('res', res)
             })
+=======
+                window.alert(`Bem-vindo(a), ${res.data.user.name}!`)
+                history.push("/feed")
+             })
+>>>>>>> Stashed changes
             .catch((err) => {
                 console.log(err)
-                console.log('form', form)
                 window.alert("Usuario ou Senha incorreta!")
             })
     };
@@ -42,7 +47,7 @@ const GlobalState = (props) => {
                 window.alert(`${err}`)
             })
     };
-    const upDateProfile = (form,id) => {
+    const upDateProfile = (form, id) => {
         axios.post(`${BASE_URL}/${appName}/restaurants/${id}/order`, form)
             .then((res) => {
                 window.alert(`Bem Vindo ${res.data.user.name}`)
@@ -128,7 +133,7 @@ const GlobalState = (props) => {
         )
             .then((res) => {
                 setProfile(res.data.user)
-                console.log('res.data', res.data.user)
+
             })
             .catch((err) => {
                 console.log(err)
@@ -167,8 +172,19 @@ const GlobalState = (props) => {
             })
     };
 
+<<<<<<< Updated upstream
     const updateProfile = (id) => {
         axios.put(`${BASE_URL}/${appName}/profile`,
+=======
+    const updateProfile = (form, history) => {
+        const body = {
+            name: form.name,
+            email: form.email,
+            cpf: form.cpf
+        }
+        console.log(form, body)
+        axios.put(`${BASE_URL}/${appName}/profile`, body,
+>>>>>>> Stashed changes
             {
                 headers: {
                     auth: localStorage.getItem("token")
@@ -184,9 +200,9 @@ const GlobalState = (props) => {
     };
 
 
-    const states = {restauranteDetails,isLoading,deliveryTime,shipping,profile,orderHistory};
-    const setters = {setdeliveryTime,setShipping};
-    const requests = { login, signUp,getRestaurantesDetails,updateProfile,getProfileAdress,addAdress,getProfile,getOrderHistory};
+    const states = { restauranteDetails, isLoading, deliveryTime, shipping, profile, orderHistory };
+    const setters = { setdeliveryTime, setShipping };
+    const requests = { login, signUp, getRestaurantesDetails, updateProfile, getProfileAdress, addAdress, getProfile, getOrderHistory };
     const data = { states, setters, requests };
 
     return (

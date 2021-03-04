@@ -1,17 +1,34 @@
 import styled from "styled-components"
 
-export const Title = styled.p`
-/* border: 1px solid black; */
-font-size: 30px;
-width: 120px;
-background: -webkit-linear-gradient(
-    RGB(0,0,0) 50%,
-    RGB(92, 182, 70) 50%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+export const Title = styled.img`
+margin-top: 1vh;
+margin-bottom: 30px;
+heigth: 104px;
+width: 158px;
+  @media (min-width: 500px) and (max-width: 800px) {
+    margin-top: 20vh;
+    heigth: 150px;
+    width: 126px;
+   }
+   @media (max-width: 499px) {
+    margin-top: 5px;
+    heigth: 65px;
+    width: 126px;
+   } ;
 `
 export const ContainerInput = styled.div`
+<<<<<<< Updated upstream
 width: 398px;
+=======
+width: 396px;
+>>>>>>> Stashed changes
 margin-bottom: 10px;
+@media (min-width: 500px) and (max-width: 800px) {
+    heigth: 150px;
+    width: 148.5%;
+   }
+   @media (max-width: 499px) {
+     heigth: 65px;
+     width: 128.5%;
+   } ;
 `

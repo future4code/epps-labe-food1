@@ -21,8 +21,9 @@ import clsx from "clsx";
 import GlobalStateContext from "../../context/GlobalStateContext";
 import useForm from "../../hooks/useForm";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import { goToSignUp } from "../../routes/Coordinator";
+import { goToFeed, goToSignUp } from "../../routes/Coordinator";
 import { useHistory } from "react-router-dom";
+import Logo from '../../assets/logo.png'
 
 
 
@@ -84,14 +85,14 @@ export default function LoginForm() {
   const handleClick = (event) => {
     event.preventDefault();
     requests.login(form)
-    clear();
+     clear();
   };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Title>Future Eats</Title>
+        <Title src={Logo} />
 
         <Typography component="h1" variant="h5">
           Entrar
@@ -116,7 +117,11 @@ export default function LoginForm() {
             <InputLabel >Senha</InputLabel>
             <ContainerInput>
               <OutlinedInput
+<<<<<<< Updated upstream
                 id="outlined-adornment-password"
+=======
+                label="Senha"
+>>>>>>> Stashed changes
                 required
                 fullWidth
                 name="password"
