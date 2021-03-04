@@ -11,7 +11,6 @@ import GlobalStateContext from '../../context/GlobalStateContext';
 import useForm from '../../hooks/useForm';
 import { useHistory } from 'react-router-dom';
 import useProtectedPage from '../../hooks/useProtectedPage';
-
 function Copyright() {
 
   return (
@@ -66,8 +65,6 @@ export default function AdressRegForm() {
 
 
 
-
-
   const history = useHistory()
   const { states, requests, setters } = useContext(GlobalStateContext);
   const [form, onChange, clearFields] = useForm({
@@ -91,9 +88,9 @@ export default function AdressRegForm() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-      {!token && (<div>
+        <Typography>
             Meu endereço
-        </div>)}
+        </Typography>
         <form onSubmit={handleClick} className={classes.form}>            
           <TextField
             variant="outlined"
