@@ -99,14 +99,15 @@ export default function SignUpForm() {
 
   const handleConfirmation = (prop) => (event) => {
     setValuesConfirme({ ...valuesConfirme, [prop]: event.target.value })
-
   };
+
 
   const { states, requests, setters } = useContext(GlobalStateContext);
   const [formSing, onChange, clearFields] = useForm({ name: "", email: "", cpf: "", password: "" });
 
 
   const handleClick = (event) => {
+    setValuesConfirme({confirm:""})
     event.preventDefault()
     if (!token) {
       requests.signUp(formSing)
@@ -118,7 +119,6 @@ export default function SignUpForm() {
       updateProfile(formSing, history)
     }
   };
-
 
 
   return (
@@ -217,7 +217,11 @@ export default function SignUpForm() {
           </InputLabel>
           <ContainerInput>
             <OutlinedInput
+              id="confirm" 
+              // error={false}
               error
+              id="outlined-error-helper-text"
+              helperText="Deve ser a mesma que a anterior"
               label= "Confirmar*"
               required
               fullWidth
@@ -230,7 +234,7 @@ export default function SignUpForm() {
                   <IconButton
                     aria-label="toggle password visibility"
                     onClick={handleShowText}
-                    edge="end"
+                     edge="end"
                   >
                     {showText ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
