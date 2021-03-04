@@ -5,7 +5,7 @@ width: 398px;
 margin-bottom: 12px;
 margin-top: 12px;
 @media (max-width: 736px) {
-    width: 143%;
+    width: 129%;
     margin-bottom: 10px;
     margin-top: 15px;
    } ;
@@ -14,7 +14,7 @@ export const LogoTitle = styled.img`
 margin-top: 1vh;
 margin-bottom: 30px;
 heigth: 104px;
-    width: 158px;
+width: 158px;
 
   @media (min-width: 500px) and (max-width: 800px) {
     margin-top: 10vh;
@@ -22,14 +22,8 @@ heigth: 104px;
     width: 126px;
    }
    @media (max-width: 499px) {
-<<<<<<< Updated upstream
-    margin-top: 5px;
      heigth: 65px;
      width: 126px;
-=======
-    heigth: 65px;
-    width: 126px;
->>>>>>> Stashed changes
    } ;
 `
 

@@ -17,11 +17,7 @@ width: 158px;
    } ;
 `
 export const ContainerInput = styled.div`
-<<<<<<< Updated upstream
-width: 398px;
-=======
 width: 396px;
->>>>>>> Stashed changes
 margin-bottom: 10px;
 @media (min-width: 500px) and (max-width: 800px) {
     heigth: 150px;

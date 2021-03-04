@@ -78,11 +78,7 @@ export default function Feed() {
   return (
     <div style={{ paddingBottom:'15%'}}>
       <div
-<<<<<<< Updated upstream
-        style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
-=======
         style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}
->>>>>>> Stashed changes
       >
         <TextField
           variant="outlined"

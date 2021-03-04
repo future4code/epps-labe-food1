@@ -21,13 +21,11 @@ import {
 } from "@material-ui/core";
 import clsx from "clsx";
 import Logo from "../../assets/logo.png"
-import { goToFeed } from "../../routes/Coordinator";
+import { goToAddressEdit } from "../../routes/Coordinator";
 import { useHistory } from "react-router-dom";
-<<<<<<< Updated upstream
-=======
 import { updateProfile } from "../../Services/use"
 import useProtectedPage from "../../hooks/useProtectedPage";
->>>>>>> Stashed changes
+
 
 function Copyright() {
   return (
@@ -110,15 +108,6 @@ export default function SignUpForm() {
 
   const handleClick = (event) => {
     event.preventDefault()
-<<<<<<< Updated upstream
-    requests.signUp(formSing)
-    clearFields()
-    if (token = true) {
-            history.push("/adress-register")
-    }
-  };
-=======
-
     if (!token) {
       requests.signUp(formSing)
       clearFields()
@@ -130,7 +119,6 @@ export default function SignUpForm() {
     }
   };
 
->>>>>>> Stashed changes
 
 
   return (
@@ -191,151 +179,147 @@ export default function SignUpForm() {
             autoFocus
           />
 
-<<<<<<< Updated upstream
-        { !token &&
-          <FormControl
-            className={clsx(classes.margin, classes.textField)}
-            variant="outlined"
-          >
-            <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
-            <ContainerInput>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                required
-                fullWidth
-                name="password"
-                style={{ maxWidth: "1000px" }}
-                type={values.showPassword ? "text" : "password"}
-                value={values.password}
-                onChange={handleChange("password")}
-                value={formSing.password}
-                onChange={onChange}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </ContainerInput>
-          </FormControl>
-          }
+// <<<<<<< Updated upstream
+//         { !token &&
+//           <FormControl
+//             className={clsx(classes.margin, classes.textField)}
+//             variant="outlined"
+//           >
+//             <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+//             <ContainerInput>
+//               <OutlinedInput
+//                 label= "Senha"
+//                 required
+//                 fullWidth
+//                 name="password"
+//                 style={{ maxWidth: "1000px" }}
+//                 type={values.showPassword ? "text" : "password"}
+//                 value={values.password}
+//                 onChange={handleChange("password")}
+//                 value={formSing.password}
+//                 onChange={onChange}
+//                 endAdornment={
+//                   <InputAdornment position="end">
+//                     <IconButton
+//                       aria-label="toggle password visibility"
+//                       onClick={handleClickShowPassword}
+//                       onMouseDown={handleMouseDownPassword}
+//                       edge="end"
+//                     >
+//                       {values.showPassword ? <Visibility /> : <VisibilityOff />}
+//                     </IconButton>
+//                   </InputAdornment>
+//                 }
+//               />
+//             </ContainerInput>
+//           </FormControl>
+//           }
 
-          { !token &&
-          <FormControl variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">
-              Confirmar Senha
-            </InputLabel>
-            <ContainerInput>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                required
-                fullWidth
-                name="confirm"
-                type={showText ? "text" : "password"}
-                value={valuesConfirme.confirm}
-                onChange={handleConfirmation("confirm")}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleShowText}
-                      edge="end"
-                    >
-                      {showText ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </ContainerInput>
-          </FormControl>
-}
-=======
-          {!token &&
-            <FormControl
-              className={clsx(classes.margin, classes.textField)}
-              variant="outlined"
-            >
-              <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
-              <ContainerInput>
-                <OutlinedInput
-                  label="Senha"
-                  required
-                  fullWidth
-                  name="password"
-                  style={{ maxWidth: "1000px" }}
-                  type={values.showPassword ? "text" : "password"}
-                  value={values.password}
-                  onChange={handleChange("password")}
-                  value={formSing.password}
-                  onChange={onChange}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                />
-              </ContainerInput>
-            </FormControl>
-          }
+//           { !token &&
+//           <FormControl variant="outlined">
+//             <InputLabel htmlFor="outlined-adornment-password">
+//               Confirmar
+//             </InputLabel>
+//             <ContainerInput>
+//               <OutlinedInput
+//                 // error
+//                 label= "Confirmar*"
+//                 required
+//                 fullWidth
+//                 name="confirm"
+//                 type={showText ? "text" : "password"}
+//                 value={valuesConfirme.confirm}
+//                 onChange={handleConfirmation("confirm")}
+//                 endAdornment={
+//                   <InputAdornment position="end">
+//                     <IconButton
+//                       aria-label="toggle password visibility"
+//                       onClick={handleShowText}
+//                       edge="end"
+//                     >
+//                       {showText ? <Visibility /> : <VisibilityOff />}
+//                     </IconButton>
+//                   </InputAdornment>
+//                 }
+//               />
+//             </ContainerInput>
+//           </FormControl>
+// }
+// =======
+//           {!token &&
+//             <FormControl
+//               className={clsx(classes.margin, classes.textField)}
+//               variant="outlined"
+//             >
+//               <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+//               <ContainerInput>
+//                 <OutlinedInput
+//                   label="Senha"
+//                   required
+//                   fullWidth
+//                   name="password"
+//                   style={{ maxWidth: "1000px" }}
+//                   type={values.showPassword ? "text" : "password"}
+//                   value={values.password}
+//                   onChange={handleChange("password")}
+//                   value={formSing.password}
+//                   onChange={onChange}
+//                   endAdornment={
+//                     <InputAdornment position="end">
+//                       <IconButton
+//                         aria-label="toggle password visibility"
+//                         onClick={handleClickShowPassword}
+//                         onMouseDown={handleMouseDownPassword}
+//                         edge="end"
+//                       >
+//                         {values.showPassword ? <Visibility /> : <VisibilityOff />}
+//                       </IconButton>
+//                     </InputAdornment>
+//                   }
+//                 />
+//               </ContainerInput>
+//             </FormControl>
+//           }
 
-          {!token &&
-            <FormControl variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">
-                Confirmar
-            </InputLabel>
-              <ContainerInput>
-                <OutlinedInput
-                  // error
-                  label="Confirmar*"
-                  required
-                  fullWidth
-                  name="confirm"
-                  type={showText ? "text" : "password"}
-                  value={valuesConfirme.confirm}
-                  onChange={handleConfirmation("confirm")}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleShowText}
-                        edge="end"
-                      >
-                        {showText ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                />
-              </ContainerInput>
-            </FormControl>
-          }
->>>>>>> Stashed changes
+//           {!token &&
+//             <FormControl variant="outlined">
+//               <InputLabel htmlFor="outlined-adornment-password">
+//                 Confirmar
+//             </InputLabel>
+//               <ContainerInput>
+//                 <OutlinedInput
+//                   // error
+//                   label="Confirmar*"
+//                   required
+//                   fullWidth
+//                   name="confirm"
+//                   type={showText ? "text" : "password"}
+//                   value={valuesConfirme.confirm}
+//                   onChange={handleConfirmation("confirm")}
+//                   endAdornment={
+//                     <InputAdornment position="end">
+//                       <IconButton
+//                         aria-label="toggle password visibility"
+//                         onClick={handleShowText}
+//                         edge="end"
+//                       >
+//                         {showText ? <Visibility /> : <VisibilityOff />}
+//                       </IconButton>
+//                     </InputAdornment>
+//                   }
+//                 />
+//               </ContainerInput>
+//             </FormControl>
+//           }
+// >>>>>>> Stashed changes
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-<<<<<<< Updated upstream
             >
-            Criar
-=======
-          >
-            {!token ? "Criar" : "Salvar alterações"}
->>>>>>> Stashed changes
+            { !token ? "Criar" : "Salvar alterações"}
           </Button>
         </form>
       </div>

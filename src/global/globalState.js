@@ -20,15 +20,10 @@ const GlobalState = (props) => {
         axios.post(`${BASE_URL}/${appName}/login`, form)
             .then((res) => {
                 localStorage.setItem("token", res.data.token)
-<<<<<<< Updated upstream
-                window.alert(`Bem Vindo ${res.data.user.name}`)
-                console.log('res', res)
-            })
-=======
                 window.alert(`Bem-vindo(a), ${res.data.user.name}!`)
                 history.push("/feed")
              })
->>>>>>> Stashed changes
+
             .catch((err) => {
                 console.log(err)
                 window.alert("Usuario ou Senha incorreta!")
@@ -38,7 +33,7 @@ const GlobalState = (props) => {
     const signUp = (form) => {
         axios.post(`${BASE_URL}/${appName}/signup`, form)
             .then((res) => {
-                window.alert(`Bem Vindo ${res.data.user.name}`)
+                window.alert(`Bem-vindo(a), ${res.data.user.name}!`)
                 localStorage.setItem("token", res.data.token)
             })
             .catch((err) => {
@@ -172,19 +167,26 @@ const GlobalState = (props) => {
             })
     };
 
-<<<<<<< Updated upstream
-    const updateProfile = (id) => {
-        axios.put(`${BASE_URL}/${appName}/profile`,
-=======
-    const updateProfile = (form, history) => {
-        const body = {
+//     const updateProfile = (id) => {
+//         axios.put(`${BASE_URL}/${appName}/profile`,
+//     const updateProfile = (form, history) => {
+//         const body = {
+//             name: form.name,
+//             email: form.email,
+//             cpf: form.cpf
+//         }
+//         console.log(form, body)
+//         axios.put(`${BASE_URL}/${appName}/profile`, body,
+// >>>>>>> Stashed changes
+
+     const updateProfile = (form, history) => {
+       const body={
             name: form.name,
-            email: form.email,
-            cpf: form.cpf
+	        email: form.email,
+            cpf: form.cpf   
         }
         console.log(form, body)
         axios.put(`${BASE_URL}/${appName}/profile`, body,
->>>>>>> Stashed changes
             {
                 headers: {
                     auth: localStorage.getItem("token")
@@ -193,6 +195,7 @@ const GlobalState = (props) => {
         )
             .then((res) => {
                 setProfileAdress(res.data)
+                // goToAddressEdit(history)
             })
             .catch((err) => {
                 console.log(err)

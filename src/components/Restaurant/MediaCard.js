@@ -45,8 +45,7 @@ export default function MediaCard(props) {
               style={{ borderRadius: "8px 8px 0 0" }}
               className={classes.media}
               image={states.restauranteDetails.logoUrl}
-              title="Contemplative Reptile"
-            />
+            ></CardMedia>
             <CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
                 {states.restauranteDetails.description}
@@ -82,7 +81,7 @@ export default function MediaCard(props) {
               </Typography>
   
                 <OrderPrice>
-                  <p>R$ {item.price}</p>
+                  <p>R$ {item.price.toFixed(2)}</p>
                   <CardActions>
                     <OrderButton>Adicionar</OrderButton>
                   </CardActions>

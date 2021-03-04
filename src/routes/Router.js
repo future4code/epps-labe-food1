@@ -12,16 +12,10 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import Error from "../pages/Error/Error";
 import GlobalState from "../global/globalState";
 
-
 export default function Router() {
   return (
     <BrowserRouter>
     <GlobalState>
-<<<<<<< Updated upstream
-      <BrowserRouter>
-        {/* <Header /> */}
-=======
->>>>>>> Stashed changes
         <Switch>
           <Route exact path="/">
             <FirstScreen />
@@ -36,16 +30,26 @@ export default function Router() {
             <SignUp />
           </Route>
           <Route exact path="/feed">
+            <Header />
             <Feed />
           </Route>
           <Route exact path="/cart">
             <BuyCart />
           </Route>
           <Route exact path="/restaurants/:restaurantId">
+            <Header />
             <RestaurantPage />
           </Route>
           <Route exact path="/profile">
             <ProfilePage />
+          </Route>
+          <Route exact path="/edit-profile">
+            <Header />
+            <SignUp />
+          </Route>
+          <Route exact path="/edit-address">
+            <Header />
+            <AdressRegister />
           </Route>
           <Route >
             <Error />

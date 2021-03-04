@@ -21,4 +21,5 @@ export const DivButton = styled.div`
     position: fixed;
     bottom: 15vh;
     width:96vw;
+
 `
