@@ -145,7 +145,8 @@ export default function SignUpForm(props) {
       { !token && <div>
         <LogoTitle src={Logo} />
         </div>}
-      <Typography component="h1" variant="h5">
+      <Typography component="h1" variant="h5" style={{fontSize:"1rem"}}>
+        
         {!token && "Cadastrar"}
       </Typography>
       <form onSubmit={handleClick} className={classes.form}>

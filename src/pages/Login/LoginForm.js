@@ -94,7 +94,7 @@ export default function LoginForm() {
       <div className={classes.paper}>
         <Title src={Logo} />
 
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" style={{fontSize:"1rem"}}>
           Entrar
         </Typography>
         <form onSubmit={handleClick} className={classes.form} noValidate>

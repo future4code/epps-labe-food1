@@ -9,7 +9,6 @@ export default function FirstScreen () {
     return(    
         <Background onClick={() => {history.push(`/login`) }}>
             <Logo>
-                {/* <Title>Future <strong>Eats</strong></Title> */}
                 <Title src={logoDesktop} />
             </Logo>   
         </Background>
