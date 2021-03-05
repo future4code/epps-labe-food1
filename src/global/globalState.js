@@ -223,7 +223,7 @@ const GlobalState = (props) => {
     };
 
 
-    const states = { restauranteDetails, isLoading, deliveryTime, shipping, profile, profileAdress, orderHistory };
+    const states = { cart, restauranteDetails, isLoading, deliveryTime, shipping, profile, profileAdress, orderHistory };
     const setters = { setdeliveryTime, setShipping };
     const requests = { addItemToCart, login, signUp, getRestaurantesDetails, updateProfile, getProfileAdress, addAdress, getProfile, getOrderHistory };
     const data = { states, setters, requests };

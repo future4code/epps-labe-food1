@@ -5,10 +5,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import {Frete, SubTotal, Valor, DivButton, Container, H} from './styles'
 import { Button } from '@material-ui/core';
+
+
 export default function Payment () {
-    
+   
    return(
-        
          <Container>
             <Frete> Frete: R$ valor</Frete>
             <SubTotal>

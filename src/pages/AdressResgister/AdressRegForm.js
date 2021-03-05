@@ -94,7 +94,7 @@ const importData = () =>{
   if(token){
     requests.getProfileAdress()
     console.log(states.profileAdress.address)
-
+    if(states.profileAdress){
     setForm({
         street: states.profileAdress.address.street, 
         number: states.profileAdress.address.number,
@@ -103,6 +103,7 @@ const importData = () =>{
         state: states.profileAdress.address.state,
         complement: states.profileAdress.address.complement
       })
+  }
      console.log("aqui dentro")
   }
   console.log("aqui")
