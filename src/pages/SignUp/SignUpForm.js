@@ -27,8 +27,6 @@ import { updateProfile } from "../../Services/use"
 import useProtectedPage from "../../hooks/useProtectedPage";
 
 
-
-
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -44,7 +42,7 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    // marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -108,8 +106,6 @@ export default function SignUpForm(props) {
     setValuesConfirme({ ...valuesConfirme, [prop]: event.target.value })
   };
 
-
-
   const handleClick = (event) => {
     setValuesConfirme({ confirm: "" })
     event.preventDefault()
@@ -145,11 +141,9 @@ export default function SignUpForm(props) {
     }
   }
 
-
-
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
+    <Container maxWidth="xs">
+      {/* <CssBaseline /> */}
       <div className={classes.paper}>
         {!token && <div>
           <LogoTitle src={Logo} />
