@@ -170,7 +170,7 @@ const GlobalState = (props) => {
     };
 
     const getProfileAdress = () => {
-        axios.get(`${BASE_URL}/${appName}/address`,
+        axios.get(`${BASE_URL}/${appName}/profile/address`,
             {
                 headers: {
                     auth: localStorage.getItem("token")
@@ -179,10 +179,12 @@ const GlobalState = (props) => {
         )
             .then((res) => {
                 setProfileAdress(res.data)
+                console.log(res.data)
             })
             .catch((err) => {
                 console.log(err)
             })
+
     };
 
 //     const updateProfile = (id) => {
@@ -221,7 +223,7 @@ const GlobalState = (props) => {
     };
 
 
-    const states = { restauranteDetails, isLoading, deliveryTime, shipping, profile, orderHistory };
+    const states = { restauranteDetails, isLoading, deliveryTime, shipping, profile, profileAdress, orderHistory };
     const setters = { setdeliveryTime, setShipping };
     const requests = { addItemToCart, login, signUp, getRestaurantesDetails, updateProfile, getProfileAdress, addAdress, getProfile, getOrderHistory };
     const data = { states, setters, requests };

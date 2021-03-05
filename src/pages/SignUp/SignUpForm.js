@@ -27,6 +27,8 @@ import { updateProfile } from "../../Services/use"
 import useProtectedPage from "../../hooks/useProtectedPage";
 
 
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -60,19 +62,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
+  useProtectedPage()
+  
+  const [formSing, onChange, clearFields,setFormSing] = useForm({ name: "", email: "", cpf: "", password: "" });
+  const [token, setToken] =useState("") 
+  const { states, requests, setters } = useContext(GlobalStateContext);
   const history = useHistory()
-  //mudar para página de editar profile
-  const [token, setToken] = useState("")
-  useEffect(() => {
-    setToken(localStorage.getItem("token"))
-  }, []) // provisório para teste
-
   const classes = useStyles();
+  
+  useEffect(()=>{
+    setToken(localStorage.getItem("token"))
+    importData()
+  },[token])
+  
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false,
   });
+  
   const [valuesConfirme, setValuesConfirme] = React.useState({
     confirm: "",
     showConfirm: false,
@@ -102,9 +110,6 @@ export default function SignUpForm() {
   };
 
 
-  const { states, requests, setters } = useContext(GlobalStateContext);
-  const [formSing, onChange, clearFields] = useForm({ name: "", email: "", cpf: "", password: "" });
-
 
   const handleClick = (event) => {
     setValuesConfirme({confirm:""})
@@ -119,6 +124,18 @@ export default function SignUpForm() {
       updateProfile(formSing, history)
     }
   };
+
+  const importData = () =>{
+    if(token){
+      requests.getProfile()
+      setFormSing({
+        name: states.profile.name,
+        email: states.profile.email,
+        cpf: states.profile.cpf
+      })
+    }
+  }
+  
 
 
   return (

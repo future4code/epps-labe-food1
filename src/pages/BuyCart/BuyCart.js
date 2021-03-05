@@ -15,15 +15,8 @@ export default function BuyCart () {
     return(
         <ContainerCart>
             <AddressDelivery/>
-             <P>Carrinho vazio</P>
-            {/* {orders.order !==null && (<Payment
-                    restaurant={orders.order.restaurantName}
-                    totalPrice={orders.order.totalPrice}
-                />)
-              
-            } */}
-            <Payment/>
             
+            <Payment/>
             
             <Footer />
         </ContainerCart>

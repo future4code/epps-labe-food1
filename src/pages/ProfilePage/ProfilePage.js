@@ -16,7 +16,6 @@ export default function ProfilePage() {
       <ProfileContainer>
         <h3> Meu perfil </h3>
         <hr />
-        {/* header fake */}
         <ProfileData />
         <BuyHistory />
       </ProfileContainer>

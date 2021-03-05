@@ -11,6 +11,7 @@ import GlobalStateContext from '../../context/GlobalStateContext';
 import useForm from '../../hooks/useForm';
 import { useHistory } from 'react-router-dom';
 import useProtectedPage from '../../hooks/useProtectedPage';
+
 function Copyright() {
 
   return (
@@ -45,13 +46,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AdressRegForm() {
+export default function AdressRegForm(props) {
+  const { states, requests, setters } = useContext(GlobalStateContext);
   useProtectedPage();
-  //mudar para página de editar profile
+
+  
   const [token, setToken] = useState("")
   useEffect(()=>{
     setToken(localStorage.getItem("token"))
-  },[]) // provisório para teste
+    importData()
+  },[token]) 
+
   const classes = useStyles();
   const [values, setValues] = React.useState({
     password: "",
@@ -66,8 +71,8 @@ export default function AdressRegForm() {
 
 
   const history = useHistory()
-  const { states, requests, setters } = useContext(GlobalStateContext);
-  const [form, onChange, clearFields] = useForm({
+  // const { states, requests, setters } = useContext(GlobalStateContext);
+  const [form, onChange, clearFields, setForm] = useForm({
     street: "", 
     number: "",
     neighbourhood: "", 
@@ -83,6 +88,28 @@ export default function AdressRegForm() {
       history.push("/feed")
   };
 
+
+// Não sei porque não importa os valores
+const importData = () =>{
+  if(token){
+    requests.getProfileAdress()
+    console.log(states.profileAdress.address)
+
+    setForm({
+        street: states.profileAdress.address.street, 
+        number: states.profileAdress.address.number,
+        neighbourhood: states.profileAdress.address.neighbourhood, 
+        city: states.profileAdress.address.city,
+        state: states.profileAdress.address.state,
+        complement: states.profileAdress.address.complement
+      })
+     console.log("aqui dentro")
+  }
+  console.log("aqui")
+}
+
+  
+  
   return (
     
     <Container component="main" maxWidth="xs">
