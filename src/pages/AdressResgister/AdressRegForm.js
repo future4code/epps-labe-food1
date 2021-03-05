@@ -85,8 +85,7 @@ export default function AdressRegForm(props) {
     event.preventDefault()
     requests.addAdress(form)
     clearFields()
-      history.push("/feed")
-  };
+    };
 
 
 // Não sei porque não importa os valores

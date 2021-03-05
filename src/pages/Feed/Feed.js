@@ -69,36 +69,288 @@ export default function Feed() {
   };
 
   const showPage = () => {
-    return filterFeed().length > 0 ? (
-      filterFeed().map((restaurant) => {
-        return (
-          <div
-            onClick={() => {
-              requests.getRestaurantesDetails(restaurant.id) ||
-                history.push(`/restaurants/${restaurant.id}`) ||
-                setters.setdeliveryTime(restaurant.deliveryTime) ||
-                setters.setShipping(restaurant.shipping);
-            }}
-          >
-            <MediaCardFeed
-              key={restaurant.id}
-              category={restaurant.category}
-              logoUrl={restaurant.logoUrl}
-              name={restaurant.name}
-              deliveryTime={restaurant.deliveryTime}
-              shipping={restaurant.shipping}
-            ></MediaCardFeed>
-            <br />
-          </div>
-        );
-      })
-    ) : (
-      <div
-        style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
-      >
-        Nenhum resultado encontrado.
-      </div>
-    );
+    if (category > 0) {
+      return (
+        <div>
+          <TabPanel value={category} index={0}>
+            <div>
+              {restaurants &&
+                restaurants.map((restaurant) => {
+                  return (
+                    <MediaCardFeed
+                      key={restaurant.id}
+                      id={restaurant.id}
+                      name={restaurant.name}
+                      description={restaurant.description}
+                      address={restaurant.address}
+                      shipping={restaurant.shipping}
+                      deliveryTime={restaurant.deliveryTime}
+                      logoUrl={restaurant.logoUrl}
+                      category={restaurant.category}
+                    />
+                  );
+                })}
+            </div>
+          </TabPanel>
+
+          <TabPanel value={category} index={1}>
+            <div>
+              {restaurants &&
+                restaurants
+                  .filter((restaurant) => {
+                    return restaurant.category === "Árabe";
+                  })
+                  .map((restaurant) => {
+                    return (
+                      <MediaCardFeed
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        name={restaurant.name}
+                        description={restaurant.description}
+                        address={restaurant.address}
+                        shipping={restaurant.shipping}
+                        deliveryTime={restaurant.deliveryTime}
+                        logoUrl={restaurant.logoUrl}
+                        category={restaurant.category}
+                      />
+                    );
+                  })}
+            </div>
+          </TabPanel>
+
+          <TabPanel value={category} index={2}>
+            <div>
+              {restaurants &&
+                restaurants
+                  .filter((restaurant) => {
+                    return restaurant.category === "Asiática";
+                  })
+                  .map((restaurant) => {
+                    return (
+                      <MediaCardFeed
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        name={restaurant.name}
+                        description={restaurant.description}
+                        address={restaurant.address}
+                        shipping={restaurant.shipping}
+                        deliveryTime={restaurant.deliveryTime}
+                        logoUrl={restaurant.logoUrl}
+                        category={restaurant.category}
+                      />
+                    );
+                  })}
+            </div>
+          </TabPanel>
+
+          <TabPanel value={category} index={3}>
+            <div>
+              {restaurants &&
+                restaurants
+                  .filter((restaurant) => {
+                    return restaurant.category === "Baiana";
+                  })
+                  .map((restaurant) => {
+                    return (
+                      <MediaCardFeed
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        name={restaurant.name}
+                        description={restaurant.description}
+                        address={restaurant.address}
+                        shipping={restaurant.shipping}
+                        deliveryTime={restaurant.deliveryTime}
+                        logoUrl={restaurant.logoUrl}
+                        category={restaurant.category}
+                      />
+                    );
+                  })}
+            </div>
+          </TabPanel>
+
+          <TabPanel value={category} index={4}>
+            <div>
+              {restaurants &&
+                restaurants
+                  .filter((restaurant) => {
+                    return restaurant.category === "Carnes";
+                  })
+                  .map((restaurant) => {
+                    return (
+                      <MediaCardFeed
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        name={restaurant.name}
+                        description={restaurant.description}
+                        address={restaurant.address}
+                        shipping={restaurant.shipping}
+                        deliveryTime={restaurant.deliveryTime}
+                        logoUrl={restaurant.logoUrl}
+                        category={restaurant.category}
+                      />
+                    );
+                  })}
+            </div>
+          </TabPanel>
+
+          <TabPanel value={category} index={5}>
+            <div>
+              {restaurants &&
+                restaurants
+                  .filter((restaurant) => {
+                    return restaurant.category === "Hamburguer";
+                  })
+                  .map((restaurant) => {
+                    return (
+                      <MediaCardFeed
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        name={restaurant.name}
+                        description={restaurant.description}
+                        address={restaurant.address}
+                        shipping={restaurant.shipping}
+                        deliveryTime={restaurant.deliveryTime}
+                        logoUrl={restaurant.logoUrl}
+                        category={restaurant.category}
+                      />
+                    );
+                  })}
+            </div>
+          </TabPanel>
+
+          <TabPanel value={category} index={6}>
+            <div>
+              {restaurants &&
+                restaurants
+                  .filter((restaurant) => {
+                    return restaurant.category === "Italiana";
+                  })
+                  .map((restaurant) => {
+                    return (
+                      <MediaCardFeed
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        name={restaurant.name}
+                        description={restaurant.description}
+                        address={restaurant.address}
+                        shipping={restaurant.shipping}
+                        deliveryTime={restaurant.deliveryTime}
+                        logoUrl={restaurant.logoUrl}
+                        category={restaurant.category}
+                      />
+                    );
+                  })}
+            </div>
+          </TabPanel>
+
+          <TabPanel value={category} index={7}>
+            <div>
+              {restaurants &&
+                restaurants
+                  .filter((restaurant) => {
+                    return restaurant.category === "Mexicana";
+                  })
+                  .map((restaurant) => {
+                    return (
+                      <MediaCardFeed
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        name={restaurant.name}
+                        description={restaurant.description}
+                        address={restaurant.address}
+                        shipping={restaurant.shipping}
+                        deliveryTime={restaurant.deliveryTime}
+                        logoUrl={restaurant.logoUrl}
+                        category={restaurant.category}
+                      />
+                    );
+                  })}
+            </div>
+          </TabPanel>
+
+          <TabPanel value={category} index={8}>
+            <div>
+              {restaurants &&
+                restaurants
+                  .filter((restaurant) => {
+                    return restaurant.category === "Petiscos";
+                  })
+                  .map((restaurant) => {
+                    return (
+                      <MediaCardFeed
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        name={restaurant.name}
+                        description={restaurant.description}
+                        address={restaurant.address}
+                        shipping={restaurant.shipping}
+                        deliveryTime={restaurant.deliveryTime}
+                        logoUrl={restaurant.logoUrl}
+                        category={restaurant.category}
+                      />
+                    );
+                  })}
+            </div>
+          </TabPanel>
+
+          <TabPanel value={category} index={9}>
+            <div>
+              {restaurants &&
+                restaurants
+                  .filter((restaurant) => {
+                    return restaurant.category === "Sorvetes";
+                  })
+                  .map((restaurant) => {
+                    return (
+                      <MediaCardFeed
+                        key={restaurant.id}
+                        id={restaurant.id}
+                        name={restaurant.name}
+                        description={restaurant.description}
+                        address={restaurant.address}
+                        shipping={restaurant.shipping}
+                        deliveryTime={restaurant.deliveryTime}
+                        logoUrl={restaurant.logoUrl}
+                        category={restaurant.category}
+                      />
+                    );
+                  })}
+            </div>
+          </TabPanel>
+        </div>
+      )
+    } else {
+      return filterFeed().length > 0 ? (
+        filterFeed().map((restaurant) => {
+          return (
+            <div
+              onClick={() => {
+                requests.getRestaurantesDetails(restaurant.id) ||
+                  history.push(`/restaurants/${restaurant.id}`) ||
+                  setters.setdeliveryTime(restaurant.deliveryTime) ||
+                  setters.setShipping(restaurant.shipping);
+              }}
+            >
+              <MediaCardFeed
+                key={restaurant.id}
+                category={restaurant.category}
+                logoUrl={restaurant.logoUrl}
+                name={restaurant.name}
+                deliveryTime={restaurant.deliveryTime}
+                shipping={restaurant.shipping}
+              ></MediaCardFeed>
+              <br />
+            </div>
+          );
+        })
+      ) : (
+        <div
+          style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
+        >
+          Nenhum resultado encontrado.
+        </div>
+      );
+    }
   };
 
 
@@ -115,9 +367,7 @@ export default function Feed() {
           style={{ minWidth: "350px" }}
         />
       </div>
-      {console.log("filterFeed.length", filterFeed().length)}
       <h1 align="center">Restaurantes</h1>
-
       <AppBar
         position="static"
         color="default"
@@ -143,255 +393,6 @@ export default function Feed() {
           <Tab label="Sorvetes" />
         </Tabs>
       </AppBar>
-
-      <TabPanel value={category} index={0}>
-        <div>
-          {restaurants &&
-            restaurants.map((restaurant) => {
-              return (
-                <MediaCardFeed
-                  key={restaurant.id}
-                  id={restaurant.id}
-                  name={restaurant.name}
-                  description={restaurant.description}
-                  address={restaurant.address}
-                  shipping={restaurant.shipping}
-                  deliveryTime={restaurant.deliveryTime}
-                  logoUrl={restaurant.logoUrl}
-                  category={restaurant.category}
-                />
-              );
-            })}
-        </div>
-      </TabPanel>
-
-      <TabPanel value={category} index={1}>
-        <div>
-          {restaurants &&
-            restaurants
-              .filter((restaurant) => {
-                return restaurant.category === "Árabe";
-              })
-              .map((restaurant) => {
-                return (
-                  <MediaCardFeed
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    address={restaurant.address}
-                    shipping={restaurant.shipping}
-                    deliveryTime={restaurant.deliveryTime}
-                    logoUrl={restaurant.logoUrl}
-                    category={restaurant.category}
-                  />
-                );
-              })}
-        </div>
-      </TabPanel>
-
-      <TabPanel value={category} index={2}>
-        <div>
-          {restaurants &&
-            restaurants
-              .filter((restaurant) => {
-                return restaurant.category === "Asiática";
-              })
-              .map((restaurant) => {
-                return (
-                  <MediaCardFeed
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    address={restaurant.address}
-                    shipping={restaurant.shipping}
-                    deliveryTime={restaurant.deliveryTime}
-                    logoUrl={restaurant.logoUrl}
-                    category={restaurant.category}
-                  />
-                );
-              })}
-        </div>
-      </TabPanel>
-
-      <TabPanel value={category} index={3}>
-        <div>
-          {restaurants &&
-            restaurants
-              .filter((restaurant) => {
-                return restaurant.category === "Baiana";
-              })
-              .map((restaurant) => {
-                return (
-                  <MediaCardFeed
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    address={restaurant.address}
-                    shipping={restaurant.shipping}
-                    deliveryTime={restaurant.deliveryTime}
-                    logoUrl={restaurant.logoUrl}
-                    category={restaurant.category}
-                  />
-                );
-              })}
-        </div>
-      </TabPanel>
-
-      <TabPanel value={category} index={4}>
-        <div>
-          {restaurants &&
-            restaurants
-              .filter((restaurant) => {
-                return restaurant.category === "Carnes";
-              })
-              .map((restaurant) => {
-                return (
-                  <MediaCardFeed
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    address={restaurant.address}
-                    shipping={restaurant.shipping}
-                    deliveryTime={restaurant.deliveryTime}
-                    logoUrl={restaurant.logoUrl}
-                    category={restaurant.category}
-                  />
-                );
-              })}
-        </div>
-      </TabPanel>
-
-      <TabPanel value={category} index={5}>
-        <div>
-          {restaurants &&
-            restaurants
-              .filter((restaurant) => {
-                return restaurant.category === "Hamburguer";
-              })
-              .map((restaurant) => {
-                return (
-                  <MediaCardFeed
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    address={restaurant.address}
-                    shipping={restaurant.shipping}
-                    deliveryTime={restaurant.deliveryTime}
-                    logoUrl={restaurant.logoUrl}
-                    category={restaurant.category}
-                  />
-                );
-              })}
-        </div>
-      </TabPanel>
-
-      <TabPanel value={category} index={6}>
-        <div>
-          {restaurants &&
-            restaurants
-              .filter((restaurant) => {
-                return restaurant.category === "Italiana";
-              })
-              .map((restaurant) => {
-                return (
-                  <MediaCardFeed
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    address={restaurant.address}
-                    shipping={restaurant.shipping}
-                    deliveryTime={restaurant.deliveryTime}
-                    logoUrl={restaurant.logoUrl}
-                    category={restaurant.category}
-                  />
-                );
-              })}
-        </div>
-      </TabPanel>
-
-      <TabPanel value={category} index={7}>
-        <div>
-          {restaurants &&
-            restaurants
-              .filter((restaurant) => {
-                return restaurant.category === "Mexicana";
-              })
-              .map((restaurant) => {
-                return (
-                  <MediaCardFeed
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    address={restaurant.address}
-                    shipping={restaurant.shipping}
-                    deliveryTime={restaurant.deliveryTime}
-                    logoUrl={restaurant.logoUrl}
-                    category={restaurant.category}
-                  />
-                );
-              })}
-        </div>
-      </TabPanel>
-
-      <TabPanel value={category} index={8}>
-        <div>
-          {restaurants &&
-            restaurants
-              .filter((restaurant) => {
-                return restaurant.category === "Petiscos";
-              })
-              .map((restaurant) => {
-                return (
-                  <MediaCardFeed
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    address={restaurant.address}
-                    shipping={restaurant.shipping}
-                    deliveryTime={restaurant.deliveryTime}
-                    logoUrl={restaurant.logoUrl}
-                    category={restaurant.category}
-                  />
-                );
-              })}
-        </div>
-      </TabPanel>
-
-      <TabPanel value={category} index={9}>
-        <div>
-          {restaurants &&
-            restaurants
-              .filter((restaurant) => {
-                return restaurant.category === "Sorvetes";
-              })
-              .map((restaurant) => {
-                return (
-                  <MediaCardFeed
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    description={restaurant.description}
-                    address={restaurant.address}
-                    shipping={restaurant.shipping}
-                    deliveryTime={restaurant.deliveryTime}
-                    logoUrl={restaurant.logoUrl}
-                    category={restaurant.category}
-                  />
-                );
-              })}
-        </div>
-      </TabPanel>
-
-      {console.log(category)}
-
       {isLoading && <img style={{ margin: "0 47%" }} src={Loading} />}
       {showPage()}
       <Footer />

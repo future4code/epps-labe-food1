@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,29 +7,33 @@ import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import GlobalStateContext from "../../context/GlobalStateContext";
+import Card from "@material-ui/core/Card";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     alignItems: "center",
-    position: "fixed",
-    zIndex: "1",
     width: "100%",
     padding: "0",
-    position: 'absolute',
     color: 'primary',
   },
 }));
 
 export default function CardSelector(props) {
   const { states, requests, setters } = useContext(GlobalStateContext);
-  const [form, onChange, clear] = useForm({ quantidade: "0" });
+  const [form, onChange, clear] = useForm({ quantidade: "1" });
 
 
-  
+const updateQuantity = () => {
+  if (form.quantidade >1) {
+    setters.setCartQuantity (form.quantidade)
+    
+  }
+};
+
+console.log('quantidade', form.quantidade)
   return (
-    <div style={{ width: '200px', alignItems: 'center' }} >
-
+    <Card style={{ backgroundColor: 'primary', width: '200px', alignItems: 'center', position: 'fixed', zIndex: '100' }} >
       <p>{props.selectedItem.name}</p>
       <img style={{ width: '50%' }} src={props.selectedItem.photoUrl}></img>
       <br />
@@ -43,8 +47,9 @@ export default function CardSelector(props) {
           width={'10px'}
 
         ></input>
+        {updateQuantity()}
       </form>
-      <Button onClick={() => requests.addItemToCart(props.selectedItem)} type="submit" fullWidth color={"neutralColor"} >adcionar ao carrinho </Button>
-    </div>
+      <Button onClick={() => requests.addItemToCart(props.selectedItem) } type="submit" fullWidth color={"neutralColor"} >adcionar ao carrinho </Button>
+    </Card>
   );
 }

@@ -17,24 +17,29 @@ const useProtectedPage = () => {
       }
     )
       .then((res) => {
-        switch (history.location.pathname) {
-          case '/login':
-            if (res.data.user.hasAddress) {
-              goToFeed(history)
-            } else {
-              goToAdressRegister(history)
-            }
-            break;
-          case '/sign-up':
-            if (res.data.user.hasAddress) {
-              goToFeed(history)
-            } else {
-              goToAdressRegister(history)
-            }
-            break;
+        const token = localStorage.getItem("token");
+        if (token) {
+          switch (history.location.pathname) {
+            case '/login':
+              if (res.data.user.hasAddress) {
+                goToFeed(history)
+              } else {
+                goToAdressRegister(history)
+              }
+              break;
+            case '/sign-up':
+              if (res.data.user.hasAddress) {
+                goToFeed(history)
+              } else {
+                goToAdressRegister(history)
+              }
+              break;
 
-          default:
-            break;
+            default:
+              break;
+          }
+        } else {
+          goToLogin(history)
         }
 
       })
@@ -45,13 +50,8 @@ const useProtectedPage = () => {
 
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      getProfile()
-    } else {
-      goToLogin(history)
-    }
-  }, [history]);
+    getProfile()
+  }, []);
 }
 
 export default useProtectedPage;
