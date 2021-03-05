@@ -14,6 +14,7 @@ const GlobalState = (props) => {
     const [profileAdress, setProfileAdress] = useState([])
     const [isLoading, setIsLoading] = useState(true);
     const [cart, setCart] = useState([])
+    const [cartQuantity, setCartQuantity] = useState()
     const history = useHistory();
 
 
@@ -22,16 +23,26 @@ const GlobalState = (props) => {
         const index = cart.findIndex((i) => i.id === newItem.id);
         let newCart = [...cart];
         if (index === -1) {
-          newCart.push({ ...newItem, amount: 1 });
+            newCart.push({ ...newItem, amount: cartQuantity });
         } else {
-          newCart[index].amount += 1;
+            newCart[index].amount += cartQuantity;
         }
         setCart(newCart);
         alert(`${newItem.name} foi adicionado ao seu carrinho!`);
         console.log('object', newCart)
-      };
+    };
 
-      
+    const removeItemFromCart = (itemToRemove) => {
+        const index = cart.findIndex((i) => i.id === itemToRemove.id);
+        let newCart = [...cart];
+        if (newCart[index].amount === 1) {
+          newCart.splice(index, 1);
+        } else {
+          newCart[index].amount -= 1;
+        }
+        setCart(newCart);
+        console.log('newCart', newCart)
+      };
 
 
     const login = (form) => {
@@ -40,7 +51,7 @@ const GlobalState = (props) => {
                 localStorage.setItem("token", res.data.token)
                 window.alert(`Bem-vindo(a), ${res.data.user.name}!`)
                 history.push("/feed")
-             })
+            })
 
             .catch((err) => {
                 console.log(err)
@@ -72,21 +83,6 @@ const GlobalState = (props) => {
             })
     };
 
-    // const getRestaurantes = () => {
-    //     axios.get(`${BASE_URL}/restaurants`,
-    //         {
-    //             headers: {
-    //                 auth: localStorage.getItem("token")
-    //             }
-    //         }
-    //     )
-    //         .then((res) => {
-    //             setRestaurantes(res.data)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    // };
     const getOrder = () => {
         axios.get(`${BASE_URL}/${appName}/orders/history`,
             {
@@ -161,11 +157,12 @@ const GlobalState = (props) => {
             })
             .then((res) => {
                 localStorage.setItem("token", res.data.token)
-                window.alert(`Bem Vindo ${res.data.user.name}`)
+                window.alert(`Cadastrado com sucesso!`)
+                history.push("/feed")
             })
             .catch((err) => {
                 console.log(err)
-                window.alert("Usuario ou Senha incorreta!")
+                window.alert("Verifique o endereço e tente novamente!")
             })
     };
 
@@ -186,24 +183,11 @@ const GlobalState = (props) => {
             })
 
     };
-
-//     const updateProfile = (id) => {
-//         axios.put(`${BASE_URL}/${appName}/profile`,
-//     const updateProfile = (form, history) => {
-//         const body = {
-//             name: form.name,
-//             email: form.email,
-//             cpf: form.cpf
-//         }
-//         console.log(form, body)
-//         axios.put(`${BASE_URL}/${appName}/profile`, body,
-// >>>>>>> Stashed changes
-
-     const updateProfile = (form, history) => {
-       const body={
+    const updateProfile = (form, history) => {
+        const body = {
             name: form.name,
-	        email: form.email,
-            cpf: form.cpf   
+            email: form.email,
+            cpf: form.cpf
         }
         console.log(form, body)
         axios.put(`${BASE_URL}/${appName}/profile`, body,
@@ -215,7 +199,6 @@ const GlobalState = (props) => {
         )
             .then((res) => {
                 setProfileAdress(res.data)
-                // goToAddressEdit(history)
             })
             .catch((err) => {
                 console.log(err)
@@ -223,9 +206,9 @@ const GlobalState = (props) => {
     };
 
 
-    const states = { cart, restauranteDetails, isLoading, deliveryTime, shipping, profile, profileAdress, orderHistory };
-    const setters = { setdeliveryTime, setShipping };
-    const requests = { addItemToCart, login, signUp, getRestaurantesDetails, updateProfile, getProfileAdress, addAdress, getProfile, getOrderHistory };
+    const states = { cartQuantity,cart, restauranteDetails, isLoading, deliveryTime, shipping, profile, profileAdress, orderHistory };
+    const setters = { setdeliveryTime, setShipping ,setCartQuantity};
+    const requests = {removeItemFromCart, addItemToCart, login, signUp, getRestaurantesDetails, updateProfile, getProfileAdress, addAdress, getProfile, getOrderHistory };
     const data = { states, setters, requests };
 
     return (

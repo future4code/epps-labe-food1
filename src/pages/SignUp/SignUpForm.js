@@ -63,24 +63,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUpForm(props) {
-  useProtectedPage()
-  
-  const [formSing, onChange, clearFields,setFormSing] = useForm({ name: "", email: "", cpf: "", password: "" });
-  const [token, setToken] =useState("") 
+
+  const [formSing, onChange, clearFields, setFormSing] = useForm({ name: "", email: "", cpf: "", password: "" });
+  const [token, setToken] = useState("")
+  const [confirmPass, setConfirmPass] = useState("")
   const { states, requests, setters } = useContext(GlobalStateContext);
   const history = useHistory()
   const classes = useStyles();
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     setToken(localStorage.getItem("token"))
     importData()
-  },[token])
-  
+  }, [token])
+
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false,
   });
-  
+
   const [valuesConfirme, setValuesConfirme] = React.useState({
     confirm: "",
     showConfirm: false,
@@ -95,7 +95,6 @@ export default function SignUpForm(props) {
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
-
   };
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -112,21 +111,19 @@ export default function SignUpForm(props) {
 
 
   const handleClick = (event) => {
-    setValuesConfirme({confirm:""})
+    setValuesConfirme({ confirm: "" })
     event.preventDefault()
     if (!token) {
       requests.signUp(formSing)
       clearFields()
-      if (token === true) {
-        history.push("/adress-register")
-      }
+      history.push("/adress-register")
     } else {
       updateProfile(formSing, history)
     }
   };
 
-  const importData = () =>{
-    if(token){
+  const importData = () => {
+    if (token) {
       requests.getProfile()
       setFormSing({
         name: states.profile.name,
@@ -135,147 +132,159 @@ export default function SignUpForm(props) {
       })
     }
   }
-  
+
+  console.log('form1', valuesConfirme.confirm)
+  console.log('form2', values.password)
+  console.log('formSing2', formSing.password)
+
+  const passwordCheck = () => {
+    if (valuesConfirme.confirm == formSing.password) {
+      return (false)
+    } else {
+      return (true)
+    }
+  }
+
 
 
   return (
     <Container component="main" maxWidth="xs">
-    <CssBaseline />
-    <div className={classes.paper}>
-      { !token && <div>
-        <LogoTitle src={Logo} />
+      <CssBaseline />
+      <div className={classes.paper}>
+        {!token && <div>
+          <LogoTitle src={Logo} />
         </div>}
-      <Typography component="h1" variant="h5">
-        {!token && "Cadastrar"}
-      </Typography>
-      <form onSubmit={handleClick} className={classes.form}>
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          id="name"
-          label="Nome"
-          placeholder="Nome e sobrenome"
-          name="name"
-          value={formSing.name}
-          onChange={onChange}
-          pattern={"^.{3,}"}
-          title={"Mínimo 3 caracteres"}
-          autoComplete="name"
-          autoFocus
-        />
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          id="email"
-          label="E-mail"
-          placeholder="email@email.com"
-          name="email"
-          value={formSing.email}
-          onChange={onChange}
-          autoComplete="email"
-          autoFocus
-        />
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          id="CPF"
-          label="CPF"
-          placeholder="000.000.000-00"
-          name="cpf"
-          value={formSing.cpf}
-          onChange={onChange}
-          autoComplete="CPF"
-          autoFocus
-        />
-      { !token &&
-        <FormControl
-          className={clsx(classes.margin, classes.textField)}
-          variant="outlined"
-        >
-          <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
-          <ContainerInput>
-            <OutlinedInput
-              label= "Senha"
-              required
-              fullWidth
-              name="password"
-              style={{ maxWidth: "1000px" }}
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              onChange={handleChange("password")}
-              value={formSing.password}
-              onChange={onChange}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </ContainerInput>
-        </FormControl>
-        }
-        { !token &&
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
-            Confirmar
+        <Typography component="h1" variant="h5">
+          {!token && "Cadastrar"}
+        </Typography>
+        <form onSubmit={handleClick} className={classes.form}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="name"
+            label="Nome"
+            placeholder="Nome e sobrenome"
+            name="name"
+            value={formSing.name}
+            onChange={onChange}
+            pattern={"^.{3,}"}
+            title={"Mínimo 3 caracteres"}
+            autoComplete="name"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="E-mail"
+            placeholder="email@email.com"
+            name="email"
+            value={formSing.email}
+            onChange={onChange}
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="CPF"
+            label="CPF"
+            placeholder="000.000.000-00"
+            name="cpf"
+            value={formSing.cpf}
+            onChange={onChange}
+            autoComplete="CPF"
+            autoFocus
+          />
+          {!token &&
+            <FormControl
+              className={clsx(classes.margin, classes.textField)}
+              variant="outlined"
+            >
+              <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+              <ContainerInput>
+                <OutlinedInput
+                  label="Senha"
+                  required
+                  fullWidth
+                  name="password"
+                  style={{ maxWidth: "1000px" }}
+                  type={values.showPassword ? "text" : "password"}
+                  value={values.password}
+                  value={formSing.password}
+                  onChange={handleChange("password")}
+                  onChange={onChange}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </ContainerInput>
+            </FormControl>
+          }
+          {!token &&
+            <FormControl variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">
+                Confirmar
           </InputLabel>
-          <ContainerInput>
-            <OutlinedInput
-              error={false}
-              id="confirm" 
-              // error={false}
-//               error
-              id="outlined-error-helper-text"
-              helperText="Deve ser a mesma que a anterior"
-              label= "Confirmar*"
-              required
-              fullWidth
-              name="confirm"
-              type={showText ? "text" : "password"}
-              value={valuesConfirme.confirm}
-              onChange={handleConfirmation("confirm")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleShowText}
-                     edge="end"
-                  >
-                    {showText ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </ContainerInput>
-        </FormControl>
-}
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.submit}
+              <ContainerInput>
+                <OutlinedInput
+                  error={passwordCheck()}
+                  id="confirm"
+                  id="outlined-error-helper-text"
+                  helperText="Deve ser a mesma que a anterior"
+                  label="Confirmar*"
+                  required
+                  fullWidth
+                  name="confirm"
+                  type={showText ? "text" : "password"}
+                  value={valuesConfirme.confirm}
+                  value={formSing.confirm}
+                  onChange={onChange}
+                  onChange={handleConfirmation("confirm")}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleShowText}
+                        edge="end"
+                      >
+                        {showText ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </ContainerInput>
+            </FormControl>
+          }
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
           >
-          { !token ? "Criar" : "Salvar alterações"}
-        </Button>
-      </form>
-    </div>
-    <Box mt={8}>
-      <Copyright />
-    </Box>
-  </Container>
-);
+            {!token ? "Criar" : "Salvar alterações"}
+          </Button>
+        </form>
+      </div>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </Container>
+  );
 }

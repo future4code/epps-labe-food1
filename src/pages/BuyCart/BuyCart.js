@@ -12,32 +12,13 @@ export default function BuyCart () {
     const [orders, setOrders] = useState()
     const { states, requests, setters } = useContext(GlobalStateContext);
     
-    // Os valores são estáticos e devem ser apagados
-    const cartTeste =[{
-        amount: 1,
-        category: "Pastel",
-        description: "Pastel autêntico, feito na hora!",
-        id: "3vcYYSOEf8dKeTPd7vHe",
-        name: "Pastel",
-        photoUrl: "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031408_66194519.jpg",
-        price: 3,
-    },
-    {
-        amount: 1,
-        category: "Pastel",
-        description: "Pastel autêntico, feito na hora!",
-        id: "3vcYYSOEf8dKeTPd7vHe",
-        name: "Pastel",
-        photoUrl: "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031408_66194519.jpg",
-        price: 3,
-    }
-]
+
+
 
     return(
         <ContainerCart>
             <AddressDelivery/>
-            {/* {states.cart && states.cart.map((food)=>{  Deve ser utilizado para renderizar os dados*/} 
-                {cartTeste.map((food)=>{ // deve ser apagado
+              {states.cart.map((food)=>{ 
                 return <CardFood
                             amount = {food.amount}
                             category ={food.category}
