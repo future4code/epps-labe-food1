@@ -114,9 +114,9 @@ export default function SignUpForm(props) {
     setValuesConfirme({ confirm: "" })
     event.preventDefault()
     if (!token) {
-      requests.signUp(formSing)
+      requests.signUp(formSing, history)
       clearFields()
-      history.push("/adress-register")
+      setValuesConfirme("")
     } else {
       updateProfile(formSing, history)
     }
@@ -133,9 +133,6 @@ export default function SignUpForm(props) {
     }
   }
 
-  console.log('form1', valuesConfirme.confirm)
-  console.log('form2', values.password)
-  console.log('formSing2', formSing.password)
 
   const passwordCheck = () => {
     if (valuesConfirme.confirm == formSing.password) {
