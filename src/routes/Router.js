@@ -24,9 +24,11 @@ export default function Router() {
             <Login />
           </Route>
           <Route exact path="/adress-register">
+            <Header />
             <AdressRegister />
           </Route>
           <Route exact path="/sign-up">
+            <Header />
             <SignUp />
           </Route>
           <Route exact path="/feed">
@@ -52,6 +54,7 @@ export default function Router() {
             <AdressRegister />
           </Route>
           <Route >
+            <Header />
             <Error />
           </Route>
         </Switch>

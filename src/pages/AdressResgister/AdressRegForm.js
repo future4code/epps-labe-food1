@@ -115,7 +115,7 @@ const importData = () =>{
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography>
+        <Typography style={{fontSize:"1rem"}}>
             Meu endereço
         </Typography>
         <form onSubmit={handleClick} className={classes.form}>            
