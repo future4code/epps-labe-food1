@@ -27,7 +27,7 @@ export default function Feed() {
   const [inputTitle, setInputTitle] = useState("");
   const [category, setCategory] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const { states, requests, setters } = useContext(GlobalStateContext);
+  const { requests, setters } = useContext(GlobalStateContext);
   const history = useHistory();
   useProtectedPage();
 

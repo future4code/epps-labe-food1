@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from "react";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import { useHistory } from "react-router-dom";
-import { Button } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import GlobalStateContext from "../../context/GlobalStateContext";
 import Card from "@material-ui/core/Card";
+import {OrderButton, CloseButton, OrderImage, Cont} from './styles'
+import CardMedia from "@material-ui/core/CardMedia";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,10 +42,24 @@ export default function CardSelector(props) {
         zIndex: "100",
       }}
     >
-      <button onClick={()=>props.setSelectcart(false)}>x</button>
-      <p>{props.selectedItem.name}</p>
-      <img style={{ width: "50%" }} src={props.selectedItem.photoUrl}></img>
+      
+      <CloseButton
+        onClick={()=>props.setSelectcart(false)}
+        color={"neutralColor"}
+      >
+        X
+      </CloseButton>
+      <Typography variant="body2" textAlign="center" color="textSecondary" component="p">
+      <Box textAlign="center" m={1}>
+        {props.selectedItem.name}
+       
+      </Box>
+      </Typography>
+      <OrderImage src={props.selectedItem.photoUrl}/>
+              
+
       <br />
+      <Cont>
       <form>
         <input
           required
@@ -54,18 +67,19 @@ export default function CardSelector(props) {
           type="number"
           value={form.quantidade}
           onChange={onChange}
-          width={"10px"}
+          width={"4px"}
         ></input>
         {updateQuantity()}
       </form>
-      <Button
+      <OrderButton
         onClick={onClickFunction}
         type="submit"
         fullWidth
         color={"neutralColor"}
       >
         adcionar ao carrinho{" "}
-      </Button>
+      </OrderButton>
+      </Cont>
     </Card>
   );
 }
