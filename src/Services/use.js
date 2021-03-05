@@ -35,7 +35,7 @@ export const getActiveOrder = (setOrders) => {
         }
     )
         .then((res) => {
-            console.log('res.data', res.data)
+            console.log(res.data)
             setOrders(res.data)
         })
         .catch((err) => {

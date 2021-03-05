@@ -21,6 +21,7 @@ export default function Feed() {
 
   useEffect(() => {
     getRestaurants();
+    requests.getProfileAdress()
   }, []);
 
   const getRestaurants = () => {

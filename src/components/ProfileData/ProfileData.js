@@ -12,10 +12,11 @@ export default function ProfileData (props) {
     // useProtectedPage();
 
     const editPersolnalInfo = () =>{
-        goToEditProfile(history) //fazer lógica para não haver nova senha e mudar button Criar para Salvar. Além disso trocar header e path. Troca o axios para update profile
+        goToEditProfile(history) 
     }
     const editAddressInfo = () =>{
-        goToAddressEdit(history)//fazer lógica para não haver nova senha e mudar button Criar para Salvar. Além disso trocar header e path
+        requests.getProfileAdress()
+        goToAddressEdit(history)
     }
 
 

@@ -10,7 +10,7 @@ export default function AddressDelivery () {
         <DataContainer>
             <div>
                 <H4>Endereço de Entrega</H4>
-                <p>{states.profile.address} dsafds</p>
+                <p>{states.profile.address} </p>
             </div>  
         </DataContainer>
     
