@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Title = styled.img`
 margin-top: 1vh;
 margin-bottom: 30px;
-heigth: 104px;
+height: 104px;
 width: 158px;
   @media (min-width: 500px) and (max-width: 800px) {
     margin-top: 20vh;
