@@ -43,7 +43,7 @@ export default function Feed() {
     axios
       .get(`${BASE_URL}/${appName}/restaurants`, { headers: { auth: token } })
       .then((res) => {
-        console.log(res.data.restaurants);
+        // console.log(res.data.restaurants);
         setRestaurants(res.data.restaurants);
         setIsLoading(false);
       })
@@ -59,7 +59,7 @@ export default function Feed() {
   const handleCategoryChange = (e, value) => {
     setCategory(value);
   };
-  console.log(restaurants);
+  // console.log(restaurants);
 
   const filterFeed = () => {
     return restaurants.filter((restaurant) => {

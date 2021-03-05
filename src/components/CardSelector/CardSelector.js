@@ -28,8 +28,11 @@ export default function CardSelector(props) {
       setters.setCartQuantity(form.quantidade);
     }
   };
-
-  console.log("quantidade", form.quantidade);
+  const onClickFunction = () =>{
+    requests.addItemToCart(props.selectedItem)
+    props.setSelectcart(false)
+  }
+  
   return (
     <Card
       style={{
@@ -40,7 +43,7 @@ export default function CardSelector(props) {
         zIndex: "100",
       }}
     >
-      <button>x</button>
+      <button onClick={()=>props.setSelectcart(false)}>x</button>
       <p>{props.selectedItem.name}</p>
       <img style={{ width: "50%" }} src={props.selectedItem.photoUrl}></img>
       <br />
@@ -56,7 +59,7 @@ export default function CardSelector(props) {
         {updateQuantity()}
       </form>
       <Button
-        onClick={() => requests.addItemToCart(props.selectedItem)}
+        onClick={onClickFunction}
         type="submit"
         fullWidth
         color={"neutralColor"}

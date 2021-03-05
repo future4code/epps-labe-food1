@@ -38,7 +38,10 @@ export default function MediaCard(props) {
 
   const showPage = () => {
     return (
-      selectcart ? <CardSelector selectedItem={selectedItem}></CardSelector> : null
+      selectcart ? <CardSelector 
+        selectedItem={selectedItem}
+        setSelectcart={setSelectcart}
+      ></CardSelector> : null
     )
   };
 
@@ -46,7 +49,7 @@ export default function MediaCard(props) {
     <div style={{ display: "flex", justifyContent: "center" }}>
       {showPage()}
       {states.isLoading ? <img style={{ margin: "0 47%" }} src={Loading} /> :
-        <Card className={classes.root}>
+        <Card className={classes.root} >
            <CardActionArea>
             <CardMedia
               style={{ borderRadius: "8px 8px 0 0" }}
