@@ -1,11 +1,9 @@
 import React from "react";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
-import styled from "styled-components"
 import {IconPosition} from "./styles"
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +34,7 @@ export default function Header() {
       <header className={classes.header}>
         <Container maxWidth="sm">
           <Button onClick={() => history.goBack()}>
-            <IconPosition>
+            <IconPosition style={{lineHeight: "0"}}>
             <ArrowBackIosIcon />
             </IconPosition>
           </Button>

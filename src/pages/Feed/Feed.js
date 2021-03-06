@@ -59,7 +59,6 @@ export default function Feed() {
   const handleCategoryChange = (e, value) => {
     setCategory(value);
   };
-  // console.log(restaurants);
 
   const filterFeed = () => {
     return restaurants.filter((restaurant) => {
@@ -71,7 +70,7 @@ export default function Feed() {
   const showPage = () => {
     if (category > 0) {
       return (
-        <div >
+        <div>
           <TabPanel value={category} index={0}>
             <div>
               {restaurants &&
@@ -368,10 +367,11 @@ export default function Feed() {
           style={{ minWidth: "350px" }}
         />
       </div>
-      <h1 align="center">Restaurantes</h1>
+      <h1 align="center" style={{fontSize: "1.17rem"}}>Restaurantes</h1>
       <AppBar
         position="static"
-        color="default"
+        color="white"
+        elevation={0}
         style={{ marginBottom: "2rem" }}
       >
         <Tabs

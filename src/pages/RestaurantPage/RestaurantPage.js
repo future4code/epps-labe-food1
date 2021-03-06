@@ -7,7 +7,7 @@ export default function RestaurantPage () {
     useProtectedPage();
     return(
         <div>
-            <h1 align="center">Restaurantes</h1>
+            <h1 align="center" style={{fontSize: "1.17rem"}}>Restaurantes</h1>
             <MediaCard />
             <Footer />
         </div>

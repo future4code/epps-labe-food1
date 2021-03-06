@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -9,18 +9,22 @@ import {
   goToProfilePage,
 } from "../../routes/Coordinator";
 import GlobalStateContext from "../../context/GlobalStateContext";
-
-
+import homePage from "../../assets/homepage.svg";
+import homeSelected from "../../assets/homepageGreen.svg";
+import cartPage from "../../assets/shopping-cart.svg";
+import cartSelected from "../../assets/shopping-cartGreen.svg";
+import profilePage from "../../assets/avatar.svg";
+import profileSelected from "../../assets/avatarGreen.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    position: 'fixed',
-    bottom: '0',
+    position: "fixed",
+    bottom: "0",
     zIndex: "1",
     width: "100vw",
-    minWidth: "350px"
+    minWidth: "350px",
   },
   footer: {
     padding: theme.spacing(1, 1),
@@ -29,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Footer() {
+export default function Footer(props) {
   const { states, requests, setters } = useContext(GlobalStateContext);
   const history = useHistory();
   const classes = useStyles();
@@ -42,24 +46,35 @@ export default function Footer() {
           maxWidth="sm"
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          <Button onClick={() => goToFeed(history)} textColor={"primary"}>
-            <img
-              src="https://cdn.zeplin.io/5dcc566ddc1332bf7fb4f450/assets/8CD04B9B-73CB-40DC-AE16-63CE142EF1F4.svg"
-              alt="Home"
-            />
-          </Button>
-          <Button onClick={() => goToBuyCart(history)}>
-            <img
-              src="https://cdn.zeplin.io/5dcc566ddc1332bf7fb4f450/assets/EC5DAC84-C9D0-4BA6-869A-6431F534FCBE.svg"
-              alt="Buy Cart"
-            />
-          </Button>
-          <Button onClick={() => goToProfilePage(history) || requests.getProfile()|| requests.getOrderHistory()}>
-            <img
-              src="https://cdn.zeplin.io/5dcc566ddc1332bf7fb4f450/assets/14952B60-73C1-4CB5-A219-C37F0F9640B5.svg"
-              alt="Person"
-            />
-          </Button>
+          {history.location.pathname === "/feed" ? (
+            <Button onClick={() => goToFeed(history)}>
+              <img src={homeSelected} />
+            </Button>
+          ) : (
+            <Button onClick={() => goToFeed(history)}>
+              <img src={homePage} />
+            </Button>
+          )}
+
+          {history.location.pathname === "/cart" ? (
+            <Button onClick={() => goToBuyCart(history)}>
+              <img src={cartSelected} />
+            </Button>
+          ) : (
+            <Button onClick={() => goToBuyCart(history)}>
+              <img src={cartPage} />
+            </Button>
+          )}
+
+          {history.location.pathname === "/profile" ? (
+            <Button onClick={() => goToProfilePage(history)}>
+              <img src={profileSelected} />
+            </Button>
+          ) : (
+            <Button onClick={() => goToProfilePage(history)}>
+              <img src={profilePage} />
+            </Button>
+          )}
         </Container>
       </footer>
     </div>
