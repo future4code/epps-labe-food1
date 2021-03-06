@@ -69,7 +69,7 @@ export const OrderImage = styled.img`
 
   @media (max-width: 499px) {
   width: 95px;
-  height: 125.5px;
+  height: 114.4px;
   margin: 0 16px 0 0;
   border-radius: 7px 0 0 7px;
   border: none;  
@@ -106,7 +106,7 @@ export const OrderButton = styled.button`
   width: 91.8px;
   height: 21px;
   padding: 8px 20.5px 8px 21.5px;
-  margin-bottom: -20px;
+  margin-bottom: -15px;
   border-top-left-radius: 7px;
   border-bottom-right-radius: 8px;
   border: 1px solid #5cb646;

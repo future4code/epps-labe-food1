@@ -33,7 +33,6 @@ export default function MediaCardFeed(props) {
             <OrderTitle gutterBottom variant="h5" component="h2">
               {props.name}
             </OrderTitle>
-
             <Typography variant="body2" color="textSecondary" component="p">
               {props.deliveryTime} min Frete R${props.shipping},00
             </Typography>
