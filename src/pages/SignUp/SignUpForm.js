@@ -42,7 +42,6 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    // marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -140,13 +139,11 @@ export default function SignUpForm(props) {
 
   return (
     <Container maxWidth="xs">
-      {/* <CssBaseline /> */}
       <div className={classes.paper}>
         {!token && <div>
           <LogoTitle src={Logo} />
         </div>}
-     <Typography component="h1" variant="h5" style={{fontSize:"1rem"}}>
-        
+     <Typography component="h1" variant="h5" style={{fontSize:"1rem"}}>        
         {!token && "Cadastrar"}
       </Typography>
       <form onSubmit={handleClick} className={classes.form}>

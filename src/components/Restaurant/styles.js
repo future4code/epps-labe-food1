@@ -14,9 +14,9 @@ export const OrderCard = styled.div`
 `;
 
 export const OrderTitle = styled(Typography)`
-  margin-top: 18px;
+  margin-top: 10px;
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
+  /* font-size: 16px; */
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -62,11 +62,18 @@ export const MainCardContent = styled.div`
 
 export const OrderImage = styled.img`
   width: 96px;
-  height: 112px;
+  height: 99px;
   margin: 0 16px 0 0;
   border-radius: 7px 0 0 7px;
   border: none;
-  /* object-fit: contain; */
+
+  @media (max-width: 499px) {
+  width: 95px;
+  height: 125.5px;
+  margin: 0 16px 0 0;
+  border-radius: 7px 0 0 7px;
+  border: none;  
+  } ;
 `;
 
 export const OrderPrice = styled.div`
@@ -80,14 +87,33 @@ export const OrderButton = styled.button`
   display: flex;
   align-self: flex-end;
   flex-flow: column wrap;
-  width: 90px;
-  height: 31px;
-  margin-top: 8px;
+  width: 91px;
+  height: 2px;
+  margin-top: -8px;
   padding: 8px 20.5px 8px 21.5px;
-  border-top-left-radius: 8px;
+  border-top-left-radius: 9px;
   border-bottom-right-radius: 8px;
   border: 1px solid #5cb646;
   color: #5cb646;
   cursor: pointer;
   background-color: transparent;
-`;
+    
+
+  @media (max-width: 499px) {
+  display: flex;
+  align-self: flex-end;
+  flex-flow: column wrap;
+  width: 91.8px;
+  height: 21px;
+  padding: 8px 20.5px 8px 21.5px;
+  margin-bottom: -20px;
+  border-top-left-radius: 7px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid #5cb646;
+  color: #5cb646;
+  cursor: pointer;
+  background-color: transparent;
+  } ;
+`
+
+
