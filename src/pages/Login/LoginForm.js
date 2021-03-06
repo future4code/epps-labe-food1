@@ -26,8 +26,6 @@ import { useHistory } from "react-router-dom";
 import Logo from '../../assets/logo.png'
 
 
-
-
 function Copyright() {
   useProtectedPage();
   return (
