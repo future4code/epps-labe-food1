@@ -71,7 +71,7 @@ export default function Feed() {
   const showPage = () => {
     if (category > 0) {
       return (
-        <div>
+        <div >
           <TabPanel value={category} index={0}>
             <div>
               {restaurants &&
@@ -87,6 +87,7 @@ export default function Feed() {
                       deliveryTime={restaurant.deliveryTime}
                       logoUrl={restaurant.logoUrl}
                       category={restaurant.category}
+                      
                     />
                   );
                 })}

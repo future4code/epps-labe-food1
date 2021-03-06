@@ -10,12 +10,13 @@ const GlobalState = (props) => {
     const [restaurantes, setRestaurantes] = useState([])
     const [orderHistory, setOrderHistory] = useState([])
     const [deliveryTime, setdeliveryTime] = useState()
-    const [shipping, setShipping] = useState()
     const [profile, setProfile] = useState([])
     const [profileAdress, setProfileAdress] = useState([])
     const [isLoading, setIsLoading] = useState(true);
     const [cart, setCart] = useState([])
-    const [cartQuantity, setCartQuantity] = useState()
+    const [cartQuantity, setCartQuantity] = useState(0)
+    const [totalValue, setTotalValue] = useState(0)
+    const [shipping, setShipping] = useState(0)
     const history = useHistory();
 
 
@@ -197,8 +198,8 @@ const GlobalState = (props) => {
     };
 
 
-    const states = { cartQuantity,cart, restauranteDetails, isLoading, deliveryTime, shipping, profile, profileAdress, orderHistory };
-    const setters = { setdeliveryTime, setShipping ,setCartQuantity};
+    const states = { totalValue,cartQuantity,cart, restauranteDetails, isLoading, deliveryTime, shipping, profile, profileAdress, orderHistory };
+    const setters = { setTotalValue,setdeliveryTime, setShipping ,setCartQuantity};
     const requests = {removeItemFromCart, addItemToCart, login, signUp, getRestaurantesDetails, updateProfile, getProfileAdress, addAdress, getProfile, getOrderHistory };
     const data = { states, setters, requests };
 
