@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -6,6 +6,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { OrderTitle } from "../Restaurant/styles";
+import GlobalStateContext from "../../context/GlobalStateContext";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
   root: {
@@ -19,9 +21,16 @@ const useStyles = makeStyles({
 
 export default function MediaCardFeed(props) {
   const classes = useStyles();
-
+  const { states, requests, setters } = useContext(GlobalStateContext);
+  const history = useHistory()
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div     onClick={() => {
+      requests.getRestaurantesDetails(props.id) ||
+        history.push(`/restaurants/${props.id}`) ||
+        setters.setdeliveryTime(props.deliveryTime) ||
+        setters.setShipping(props.shipping);
+    }} 
+    style={{ display: "flex", justifyContent: "center" }}>
       <Card className={classes.root}>
         <CardActionArea key={props.id}>
           <CardMedia

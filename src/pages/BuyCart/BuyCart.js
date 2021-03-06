@@ -27,11 +27,11 @@ export default function BuyCart () {
                             name={food.name}
                             photoUrl={food.photoUrl}
                             price={food.price}
+                            
                 />
             })}
-            
+                        
             <Payment/>
-            
             <Footer />
         </ContainerCart>
     )

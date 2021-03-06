@@ -4,6 +4,6 @@ export const P = styled.p`
     text-align:center;
 `
 export const ContainerCart = styled.div`
-    margin:0;
+     max-height:20px;
 
 `

@@ -1,5 +1,5 @@
 import { Card } from '@material-ui/core';
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -20,10 +20,19 @@ import {
 
 export default function CardFood (props) {
   const { states, requests, setters } = useContext(GlobalStateContext);
+  const [priceToPay, setPriceToPay] = useState(0);
+
+  useEffect(() => {
+    let currentTotal = 0;
+    states.cart.forEach((item) => {
+      currentTotal += item.price * item.amount;
+    });
+    setters.setTotalValue(currentTotal+states.shipping);
+   }, [states]);
 
 return(       
     
-         <div style={{ display: "flex", justifyContent: "center" }}>
+         <div style={{ display: "flex", justifyContent: "center"}}>
           <Card  key={props.id}>
              <OrderCard key={props.id}>
               <OrderImage src={props.photoUrl}/>
@@ -38,7 +47,7 @@ return(
               </Typography>
   
                 <OrderPrice>
-                  <p>R$ { props.price.toFixed(2)}</p>
+                  <p>R$ { (props.price*props.amount).toFixed(2)}</p>
                 <button  onClick={() => {requests.removeItemFromCart(props)}}>remover</button>
                 </OrderPrice>
               </MainCardContent>
