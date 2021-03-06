@@ -81,17 +81,21 @@ export default function MediaCard(props) {
               <OrderImage src={item.photoUrl}/>
   
               <MainCardContent>
-                <OrderTitle gutterBottom variant="h5" component="h2">
+                <OrderTitle gutterBottom variant="h5" component="h2"
+                             
+                style={{fontSize:"1rem"}}
+                >
                   {item.name}
               </OrderTitle>
                 <Typography variant="body2" color="textSecondary" component="p">
                  {item.description}
               </Typography>
-  
                 <OrderPrice>
                   <p>R$ {item.price.toFixed(2)}</p>
                   <CardActions>
-                    <OrderButton onClick={() => {setSelectcart(true) ||setSelectedItem(item)}}>Adicionar</OrderButton>
+                    <OrderButton onClick={() => {setSelectcart(true) ||setSelectedItem(item)}}                   
+                    style={{paddingBottom:"1.4rem"}}
+                    >Adicionar</OrderButton>
                   </CardActions>
                 </OrderPrice>
               </MainCardContent>

@@ -90,10 +90,8 @@ export default function LoginForm() {
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <div className={classes.paper}>
         <Title src={Logo} />
-
         <Typography component="h1" variant="h5" style={{fontSize:"1rem"}}>
           Entrar
         </Typography>

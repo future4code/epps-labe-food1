@@ -5,13 +5,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import styled from "styled-components"
+import {IconPosition} from "./styles"
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     alignItems: "left",
     justifyContent: "flex-start",
-    // position: "fixed",
     top: "0",
     zIndex: "1",
     width: "100%",
@@ -35,7 +36,9 @@ export default function Header() {
       <header className={classes.header}>
         <Container maxWidth="sm">
           <Button onClick={() => history.goBack()}>
+            <IconPosition>
             <ArrowBackIosIcon />
+            </IconPosition>
           </Button>
         </Container>
         <hr />

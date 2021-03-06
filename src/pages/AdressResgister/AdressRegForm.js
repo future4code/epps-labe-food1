@@ -111,7 +111,6 @@ const importData = () =>{
   return (
     
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <div className={classes.paper}>
         <Typography style={{fontSize:"1rem"}}>
             Meu endereço
