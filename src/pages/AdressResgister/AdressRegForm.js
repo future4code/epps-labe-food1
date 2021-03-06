@@ -10,7 +10,6 @@ import Container from '@material-ui/core/Container';
 import GlobalStateContext from '../../context/GlobalStateContext';
 import useForm from '../../hooks/useForm';
 import { useHistory } from 'react-router-dom';
-import useProtectedPage from '../../hooks/useProtectedPage';
 
 function Copyright() {
 
@@ -48,9 +47,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AdressRegForm(props) {
   const { states, requests, setters } = useContext(GlobalStateContext);
-  useProtectedPage();
+  // useProtectedPage();
 
-  
   const [token, setToken] = useState("")
   useEffect(()=>{
     setToken(localStorage.getItem("token"))
@@ -93,7 +91,7 @@ const importData = () =>{
   if(token){
     requests.getProfileAdress()
     console.log(states.profileAdress.address)
-    if(states.profileAdress){
+    if(states.profileAdress.address){
     setForm({
         street: states.profileAdress.address.street, 
         number: states.profileAdress.address.number,

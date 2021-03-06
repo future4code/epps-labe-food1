@@ -3,6 +3,7 @@ import axios from "axios";
 import GlobalStateContext from "../context/GlobalStateContext";
 import { BASE_URL, appName } from '../constants/baseUrl'
 import { useHistory } from "react-router-dom";
+import { goToAdressRegister } from "../routes/Coordinator";
 
 const GlobalState = (props) => {
     const [restauranteDetails, setRestauranteDetails] = useState([])
@@ -29,7 +30,6 @@ const GlobalState = (props) => {
         }
         setCart(newCart);
         alert(`${newItem.name} foi adicionado ao seu carrinho!`);
-        console.log('object', newCart)
     };
 
     const removeItemFromCart = (itemToRemove) => {
@@ -41,7 +41,6 @@ const GlobalState = (props) => {
           newCart[index].amount -= 1;
         }
         setCart(newCart);
-        console.log('newCart', newCart)
       };
 
 
@@ -59,16 +58,15 @@ const GlobalState = (props) => {
             })
     };
 
-    const signUp = (form) => {
+    const signUp = (form, history) => {
         axios.post(`${BASE_URL}/${appName}/signup`, form)
             .then((res) => {
                 window.alert(`Bem-vindo(a), ${res.data.user.name}!`)
                 localStorage.setItem("token", res.data.token)
+                goToAdressRegister(history)
             })
             .catch((err) => {
-                console.log('form', form)
-                console.log(err)
-                window.alert(`${err}`)
+                window.alert(`Email já pode ter sido cadastrado. Tente de novo mais tarde. ${err.message}`)
             })
     };
     const upDateProfile = (form, id) => {
@@ -78,7 +76,6 @@ const GlobalState = (props) => {
                 localStorage.setItem("token", res.data.token)
             })
             .catch((err) => {
-                console.log(err)
                 window.alert("Usuario ou Senha incorreta!")
             })
     };
@@ -107,7 +104,6 @@ const GlobalState = (props) => {
             }
         )
             .then((res) => {
-                console.log('res.data', res.data)
                 setRestaurantes(res.data)
             })
             .catch((err) => {
@@ -124,9 +120,7 @@ const GlobalState = (props) => {
         )
             .then((res) => {
                 setRestauranteDetails(res.data.restaurant)
-                console.log('res.data', isLoading)
                 setIsLoading(false)
-                console.log('res.data', isLoading)
             })
             .catch((err) => {
                 console.log(err)
@@ -161,7 +155,6 @@ const GlobalState = (props) => {
                 history.push("/feed")
             })
             .catch((err) => {
-                console.log(err)
                 window.alert("Verifique o endereço e tente novamente!")
             })
     };
@@ -176,7 +169,6 @@ const GlobalState = (props) => {
         )
             .then((res) => {
                 setProfileAdress(res.data)
-                console.log(res.data)
             })
             .catch((err) => {
                 console.log(err)
@@ -189,7 +181,6 @@ const GlobalState = (props) => {
             email: form.email,
             cpf: form.cpf
         }
-        console.log(form, body)
         axios.put(`${BASE_URL}/${appName}/profile`, body,
             {
                 headers: {

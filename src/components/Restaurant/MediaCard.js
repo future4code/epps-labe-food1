@@ -5,10 +5,8 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import GlobalStateContext from "../../context/GlobalStateContext";
-import useProtectedPage from '../../hooks/useProtectedPage';
 import Loading from "../../assets/loading.gif";
 import {
   OrderCard,
@@ -38,15 +36,18 @@ export default function MediaCard(props) {
 
   const showPage = () => {
     return (
-      selectcart ? <CardSelector selectedItem={selectedItem}></CardSelector> : null
+      selectcart ? <CardSelector 
+        selectedItem={selectedItem}
+        setSelectcart={setSelectcart}
+      ></CardSelector> : null
     )
   };
-
+  console.log(selectedItem)
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       {showPage()}
       {states.isLoading ? <img style={{ margin: "0 47%" }} src={Loading} /> :
-        <Card className={classes.root}>
+        <Card className={classes.root} >
            <CardActionArea>
             <CardMedia
               style={{ borderRadius: "8px 8px 0 0" }}
