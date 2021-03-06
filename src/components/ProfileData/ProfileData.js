@@ -16,8 +16,7 @@ export default function ProfileData (props) {
     }
     const editAddressInfo = () =>{
         requests.getProfileAdress()
-        goToAddressEdit(history)
-    }
+        goToAddressEdit(history)    }
 
 
     return(
