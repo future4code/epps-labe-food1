@@ -13,7 +13,7 @@ Todas as funcionalidades exigidas:
 - [x] Home, com opções de busca por palavra ou categoria de restaurante
 - [x] Carrinho
 - [x] Feed de restaurantes e detalhe do restaurante
-- [x] Pop up para cadastro de pedido
+- [x] Pop up para cadastro de pedido (tomamos a liberdade de incluir a imagem do produto)
 - [x] Pop up para pedido em andamento
 - [x] Perfil, com opções para editar perfil e endereço
 - [x] Incluímos um botão de logout no Perfil
