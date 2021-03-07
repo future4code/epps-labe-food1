@@ -1,5 +1,9 @@
 # PROJETO FutureEats 🍕🍟🍔
 
+<h2 align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/future4code/epps-labe-food1"> <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/future4code/epps-labe-food1">
+</h2>
+
 <h4 align='center'>
 👉 Status: Concluído ✔️👏
 </h4>
@@ -8,6 +12,9 @@
 ### 🔗 Link do Surge: 
 http://small-pizzas.surge.sh/
 <br />
+
+### 📱 Responsividade:
+- Para uma melhor experiência da aplicação, recomendados a visualiação em dispositivos iPhone 6/7/8.
 
 ### 🔓 Informações de acesso:
 - Cadastre-se, gere login e senha de acesso, insira um endereço válido e tenha uma ótima experiência.
