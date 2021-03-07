@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 export const OrderCard = styled.div`
   display: flex;
   width: 328px;
-  height:17vh;
+  height: 17vh;
   margin: 8px;
   border-radius: 8px;
   align-items: center;
@@ -66,7 +66,7 @@ export const OrderImage = styled.img`
   margin: 0 16px 0 0;
   border-radius: 7px 0 0 7px;
   border: none;
-  /* object-fit: contain; */
+  object-fit: contain;
 `;
 
 export const OrderPrice = styled.div`
@@ -74,20 +74,15 @@ export const OrderPrice = styled.div`
   width: 100%;
   -webkit-box-pack: justify;
   justify-content: space-between;
-`;
 
-export const OrderButton = styled.button`
-  display: flex;
-  align-self: flex-end;
-  flex-flow: column wrap;
-  width: 90px;
-  height: 31px;
-  margin-top: 8px;
-  padding: 8px 20.5px 8px 21.5px;
-  border-top-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border: 1px solid #5cb646;
-  color: #5cb646;
-  cursor: pointer;
-  background-color: transparent;
+  button {
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1px solid #e02020;
+    color: #e02020;
+    min-width: 100px;
+    height: 5.7vh;
+    cursor: pointer;
+    background-color: transparent;
+  }
 `;
