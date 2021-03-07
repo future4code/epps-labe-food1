@@ -8,7 +8,7 @@
 <br />
 
 ### ✨ Funcionamento:
-Todas as funcionalidades exigidas:
+As funcionalidades exigidas:
 - [x] Login + SignUp + Cadastro de Endereço
 - [x] Home, com opções de busca por palavra ou categoria de restaurante
 - [x] Carrinho
