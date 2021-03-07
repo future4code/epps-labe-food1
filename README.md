@@ -1,4 +1,4 @@
-# PROJETO FutureEats
+# PROJETO FutureEats 🍕🍟🍔
 
 <h4 align='center'>
 👉 Status: Concluído ✔️👏
