@@ -19,17 +19,17 @@ Todas as funcionalidades exigidas:
 - [x] Incluímos um botão de logout no Perfil
 - [x] Incluímos uma página de erro
 
-### :computador: Tecnologias:
+### Tecnologias
 As seguintes tecnologias foram usadas na construção do projeto:
 - [React](https://pt-br.reactjs.org/)
 - [JavaScript](https://www.javascript.com/)
 
 
-### :arte: Layout:
+### Layout
 - Styled-componentes
 - Material-UI
 
-### :câmera: Prints:
+### Prints
 - colocar suas imagens aqui
 
 <hr />
