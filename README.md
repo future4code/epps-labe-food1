@@ -6,7 +6,7 @@
 <br />
 
 ### 🔗 Link do Surge: 
-http://imminent-bikes.surge.sh/
+http://small-pizzas.surge.sh/
 <br />
 
 ### 🔓 Informações de acesso:
