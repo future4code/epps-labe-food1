@@ -4,7 +4,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { Frete, SubTotal, Valor, DivButton, Container, H } from "./styles";
-import { Button, Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import GlobalStateContext from "../../context/GlobalStateContext";
 import timer from "../../assets/timer.svg";
 
@@ -21,18 +21,9 @@ export default function Payment() {
       return (
         <>
           <DivButton>
-            {/* <Typography
-            variant="body2"
-            textAlign="center"
-            color="textSecondary"
-            component="p"
-          > */}
-            {/* <button style={{ display: "flex", justifyContent: "flex-end" }}>X</button> */}
             <img src={timer} alt="Ícone tempo" />
             <h5>Pedido em andamento</h5>
             <p>TOTAL: R$ {states.totalValue.toFixed(2)}</p>
-
-            {/* </Typography> */}
           </DivButton>
         </>
       );
@@ -44,7 +35,7 @@ export default function Payment() {
       <Frete> Frete: R$ {states.shipping.toFixed(2)}</Frete>
       <SubTotal>
         <div>SUBTOTAL</div>
-        <Valor>R$ {states.subValue.toFixed(2)}  Total</Valor>
+        <Valor>R$ {states.subValue.toFixed(2)} Total</Valor>
       </SubTotal>
       <H>Forma de pagamento</H>
       <hr />

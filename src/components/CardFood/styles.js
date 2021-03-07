@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 export const OrderCard = styled.div`
@@ -83,6 +82,7 @@ export const OrderPrice = styled.div`
     min-width: 100px;
     height: 5.7vh;
     cursor: pointer;
+    margin-top: 12px;
     background-color: transparent;
   }
 `;

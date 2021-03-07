@@ -3,10 +3,6 @@ import Button from "@material-ui/core/Button";
 
 export const ContainerFoot = styled.footer`
   width: 328px;
-  /* height: 188px; */
-
-  /* display: flex;
-justify-content: space-between; */
 `;
 
 export const DisplayButtonFooter = styled(Button)`

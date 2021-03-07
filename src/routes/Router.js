@@ -15,7 +15,7 @@ import GlobalState from "../global/globalState";
 export default function Router() {
   return (
     <BrowserRouter>
-    <GlobalState>
+      <GlobalState>
         <Switch>
           <Route exact path="/">
             <FirstScreen />
@@ -53,12 +53,12 @@ export default function Router() {
             <Header />
             <AdressRegister />
           </Route>
-          <Route >
+          <Route>
             <Header />
             <Error />
           </Route>
         </Switch>
-    </GlobalState>
-      </BrowserRouter>
+      </GlobalState>
+    </BrowserRouter>
   );
 }
