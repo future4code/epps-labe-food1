@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
-import {IconPosition} from "./styles"
+import { IconPosition } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     top: "0",
     zIndex: "1",
     width: "100%",
-    padding: "0"
+    padding: "0",
   },
   header: {
     padding: theme.spacing(1, 1),
@@ -34,8 +34,8 @@ export default function Header() {
       <header className={classes.header}>
         <Container maxWidth="sm">
           <Button onClick={() => history.goBack()}>
-            <IconPosition style={{lineHeight: "0"}}>
-            <ArrowBackIosIcon />
+            <IconPosition style={{ lineHeight: "0" }}>
+              <ArrowBackIosIcon />
             </IconPosition>
           </Button>
         </Container>

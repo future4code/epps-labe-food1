@@ -1,9 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const P = styled.p`
-    text-align:center;
-`
+  text-align: center;
+`;
 export const ContainerCart = styled.div`
-     max-height:20px;
-
-`
+  max-height: 20px;
+`;

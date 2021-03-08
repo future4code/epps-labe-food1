@@ -35,20 +35,22 @@ export default function MediaCard(props) {
   const [selectedItem, setSelectedItem] = useState();
 
   const showPage = () => {
-    return (
-      selectcart ? <CardSelector 
+    return selectcart ? (
+      <CardSelector
         selectedItem={selectedItem}
         setSelectcart={setSelectcart}
-      ></CardSelector> : null
-    )
+      ></CardSelector>
+    ) : null;
   };
-  console.log(selectedItem)
+  console.log(selectedItem);
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       {showPage()}
-      {states.isLoading ? <img style={{ margin: "0 47%" }} src={Loading} /> :
-        <Card className={classes.root} >
-           <CardActionArea>
+      {states.isLoading ? (
+        <img style={{ margin: "0 47%" }} src={Loading} />
+      ) : (
+        <Card className={classes.root}>
+          <CardActionArea>
             <CardMedia
               style={{ borderRadius: "8px 8px 0 0" }}
               className={classes.media}
@@ -65,7 +67,8 @@ export default function MediaCard(props) {
                 {states.restauranteDetails.category}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                {states.deliveryTime} minutos <span> Frete: R$ {states.shipping},00</span>
+                {states.deliveryTime} minutos{" "}
+                <span> Frete: R$ {states.shipping},00</span>
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 {states.restauranteDetails.address}
@@ -77,32 +80,47 @@ export default function MediaCard(props) {
 
           {states.restauranteDetails.products.map((item) => {
             return (
-               <OrderCard key={item.id}>
-              <OrderImage src={item.photoUrl}/>
-  
-              <MainCardContent>
-                <OrderTitle gutterBottom variant="h5" component="h2"
-                             
-                style={{fontSize:"1rem"}}
-                >
-                  {item.name}
-              </OrderTitle>
-                <Typography variant="body2" color="textSecondary" component="p">
-                 {item.description}
-              </Typography>
-                <OrderPrice>
-                  <p>R$ {item.price.toFixed(2)}</p>
-                  <CardActions>
-                    <OrderButton onClick={() => {setSelectcart(true) ||setSelectedItem(item)}}                   
-                    style={{paddingBottom:"1.4rem"}}
-                    >Adicionar</OrderButton>
-                  </CardActions>
-                </OrderPrice>
-              </MainCardContent>
-            </OrderCard> )
+              <OrderCard key={item.id}>
+                <OrderImage src={item.photoUrl} />
+
+                <MainCardContent>
+                  <OrderTitle
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                    style={{ fontSize: "0.8rem" }}
+                  >
+                    {item.name}
+                  </OrderTitle>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {item.description}
+                  </Typography>
+                  <OrderPrice>
+                    <p>R$ {item.price.toFixed(2)}</p>
+                    <CardActions>
+                      <OrderButton
+                        onClick={() => {
+                          setSelectcart(true) || setSelectedItem(item);
+                        }}
+                        style={{
+                          paddingBottom: "1.4rem",
+                          marginBottom: "-17px",
+                        }}
+                      >
+                        Adicionar
+                      </OrderButton>
+                    </CardActions>
+                  </OrderPrice>
+                </MainCardContent>
+              </OrderCard>
+            );
           })}
-       </Card>
-      }
+        </Card>
+      )}
     </div>
   );
 }

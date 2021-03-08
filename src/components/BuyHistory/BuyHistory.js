@@ -1,5 +1,4 @@
 import { Typography } from "@material-ui/core";
-import { FormatAlignCenter } from "@material-ui/icons";
 import React, { useContext } from "react";
 import GlobalStateContext from "../../context/GlobalStateContext";
 import useProtectedPage from "../../hooks/useProtectedPage";

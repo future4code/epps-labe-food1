@@ -9,29 +9,28 @@ const useProtectedPage = () => {
   const history = useHistory();
 
   const getProfile = () => {
-    axios.get(`${BASE_URL}/${appName}/profile`,
-      {
+    axios
+      .get(`${BASE_URL}/${appName}/profile`, {
         headers: {
-          auth: localStorage.getItem("token")
-        }
-      }
-    )
+          auth: localStorage.getItem("token"),
+        },
+      })
       .then((res) => {
         const token = localStorage.getItem("token");
         if (token) {
           switch (history.location.pathname) {
-            case '/login':
+            case "/login":
               if (res.data.user.hasAddress) {
-                goToFeed(history)
+                goToFeed(history);
               } else {
-                goToAdressRegister(history)
+                goToAdressRegister(history);
               }
               break;
-            case '/sign-up':
+            case "/sign-up":
               if (res.data.user.hasAddress) {
-                goToFeed(history)
+                goToFeed(history);
               } else {
-                goToAdressRegister(history)
+                goToAdressRegister(history);
               }
               break;
 
@@ -39,19 +38,17 @@ const useProtectedPage = () => {
               break;
           }
         } else {
-          goToLogin(history)
+          goToLogin(history);
         }
-
       })
       .catch((err) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   };
 
-
   useEffect(() => {
-    getProfile()
+    getProfile();
   }, []);
-}
+};
 
 export default useProtectedPage;

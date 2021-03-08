@@ -1,11 +1,10 @@
-import React from 'react'
-import useProtectedPage from '../../hooks/useProtectedPage';
-import AdressRegForm from './AdressRegForm'
+import React from "react";
+import AdressRegForm from "./AdressRegForm";
 
-export default function AdressRegister () {
-    return(
-        <div>
-            <AdressRegForm />
-        </div>
-    )
+export default function AdressRegister() {
+  return (
+    <div>
+      <AdressRegForm />
+    </div>
+  );
 }

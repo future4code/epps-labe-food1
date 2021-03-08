@@ -5,16 +5,9 @@ import { BASE_URL, appName } from "../../constants/baseUrl";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { useHistory } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
-import {
-  AppBar,
-  Box,
-  Tab,
-  Tabs,
-  TextField,
-} from "@material-ui/core";
+import { AppBar, Box, Tab, Tabs, TextField } from "@material-ui/core";
 import Loading from "../../assets/loading.gif";
 import GlobalStateContext from "../../context/GlobalStateContext";
-import { goToRestaurantPage } from "../../routes/Coordinator";
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -33,7 +26,7 @@ export default function Feed() {
 
   useEffect(() => {
     getRestaurants();
-    requests.getProfileAdress()
+    requests.getProfileAdress();
   }, []);
 
   const getRestaurants = () => {
@@ -43,7 +36,6 @@ export default function Feed() {
     axios
       .get(`${BASE_URL}/${appName}/restaurants`, { headers: { auth: token } })
       .then((res) => {
-        // console.log(res.data.restaurants);
         setRestaurants(res.data.restaurants);
         setIsLoading(false);
       })
@@ -86,7 +78,6 @@ export default function Feed() {
                       deliveryTime={restaurant.deliveryTime}
                       logoUrl={restaurant.logoUrl}
                       category={restaurant.category}
-                      
                     />
                   );
                 })}
@@ -318,7 +309,7 @@ export default function Feed() {
             </div>
           </TabPanel>
         </div>
-      )
+      );
     } else {
       return filterFeed().length > 0 ? (
         filterFeed().map((restaurant) => {
@@ -353,7 +344,6 @@ export default function Feed() {
     }
   };
 
-
   return (
     <div style={{ paddingBottom: "15%" }}>
       <div
@@ -367,7 +357,9 @@ export default function Feed() {
           style={{ minWidth: "350px" }}
         />
       </div>
-      <h1 align="center" style={{fontSize: "1.17rem"}}>Restaurantes</h1>
+      <h1 align="center" style={{ fontSize: "1.17rem" }}>
+        Restaurantes
+      </h1>
       <AppBar
         position="static"
         color="white"
