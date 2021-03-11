@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# PROJETO FutureEats 🍕🍟🍔
 
-## Available Scripts
+<h2 align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/future4code/epps-labe-food1"> <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/future4code/epps-labe-food1">
+</h2>
 
-In the project directory, you can run:
+<h4 align='center'>
+👉 Status: Concluído ✔️👏
+</h4>
+<br />
 
-### `npm start`
+### 🔗 Link do Surge: 
+http://small-pizzas.surge.sh/
+<br />
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 📱 Responsividade:
+- Para uma melhor experiência da aplicação, recomendados a visualiação em dispositivos iPhone 6/7/8.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### 🔓 Informações de acesso:
+- Cadastre-se, gere login e senha de acesso, insira um endereço válido e tenha uma ótima experiência.
 
-### `npm test`
+### 🙋 Participantes:
+- Fernando Loures da Silva
+- Gabriel Marques Batista
+- Jéssica Damaceno Barbosa
+- Juliana Cristina Pedroso
+- Marivone Vieira Pereira de Araújo
+- Vivian de Oliveira Costa  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ✨ Funcionamento:
+As funcionalidades exigidas:
+- [x] Login + SignUp + Cadastro de Endereço
+- [x] Home, com opções de busca por palavra ou categoria de restaurante
+- [x] Carrinho de compras
+- [x] Feed de restaurantes e detalhe do restaurante
+- [x] Pop up para cadastro de pedido (tomamos a liberdade de incluir a imagem do produto)
+- [x] Pop up para pedido em andamento
+- [x] Perfil, com opções para editar perfil e endereço
+- [x] Incluímos um botão de logout no Perfil
+- [x] Incluímos uma página de erro
+- [ ] Não é possível visualizar o histórico de pedidos no Perfil
 
-### `npm run build`
+### 💻 Tecnologias:
+As seguintes tecnologias foram usadas na construção do projeto:
+- [React](https://pt-br.reactjs.org/)
+- [JavaScript](https://www.javascript.com/)
+- [Material-UI](https://material-ui.com/pt/)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🎨 Layout:
+- Styled-componentes
+- Material-UI
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### 📷 Prints:
+<img src="https://user-images.githubusercontent.com/68782453/110254923-090f6280-7f70-11eb-96bf-4a9ebd336f2b.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110254933-14fb2480-7f70-11eb-8675-3dc77f1b33ce.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110254956-29d7b800-7f70-11eb-98d9-6d433f7b030b.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110254977-48d64a00-7f70-11eb-8000-386b2bfe6e9e.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110254995-686d7280-7f70-11eb-9039-2caa63f89110.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110255002-74f1cb00-7f70-11eb-95fa-01120fb0e520.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110255017-84711400-7f70-11eb-97e2-096b86298d4f.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110255058-af5b6800-7f70-11eb-8fbd-2fcde6caa1fd.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110255066-b84c3980-7f70-11eb-89b6-38b409e288f0.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110255075-c306ce80-7f70-11eb-96b6-28c089345dc4.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110255089-cc903680-7f70-11eb-9172-39323ad23c4d.png" width="30%"></img> 
+<img src="https://user-images.githubusercontent.com/68782453/110254986-54c20c00-7f70-11eb-8158-f4aeba95d20b.png" width="30%"></img> 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<hr />
